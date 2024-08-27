@@ -1,0 +1,78 @@
+<app-navbar></app-navbar>
+<div class="header">
+  <h1>Registration</h1>
+  <p>Select User Type</p>
+</div>
+
+<!-- Image Buttons -->
+<div class="image-buttons">
+  <div class="image-button" (click)="showForm('student')">
+    <img src="assests\images\student1.jpg" alt="Student">
+    <span>Student</span>
+  </div>
+  <div class="image-button" (click)="showForm('university')">
+    <img src="assests\images\pursuitmanager.jpg" alt="Pursuitmanager">
+    <span>Pursuitmanagers</span>
+  </div>
+  <div class="image-button" (click)="showForm('company')">
+    <img src="assests\images\training.jpg" alt="Company">
+    <span>Training</span>
+  </div>
+  <div class="image-button" (click)="showForm('coordinators')">
+    <img src="assests\images\coordinators.jpg" alt="Company">
+    <span>Coordinators</span>
+  </div>
+</div>
+
+<!-- Registration Forms -->
+<form *ngIf="selectedForm === 'student'" (ngSubmit)="onSubmit()">
+  <h2>Student Registration</h2>
+  <div class="form-group">
+    <label for="studentEmail">Email</label>
+    <input type="email" class="form-control" id="studentEmail" [(ngModel)]="formData.email" name="email" required>
+  </div>
+  <div class="form-group">
+    <label for="studentPassword">Password</label>
+    <input type="password" class="form-control" id="studentPassword" [(ngModel)]="formData.password" name="password" required>
+  </div>
+  <button [routerLink]="['/cv-form']" class="btn btn-primary">Signup</button>
+</form>
+
+<form *ngIf="selectedForm === 'university'" (ngSubmit)="onSubmit()">
+  <h2>Pursuit managers Registration</h2>
+  <div class="form-group">
+    <label for="universityEmail">Email</label>
+    <input type="email" class="form-control" id="universityEmail" [(ngModel)]="formData.email" name="email" required>
+  </div>
+  <div class="form-group">
+    <label for="universityPassword">Password</label>
+    <input type="password" class="form-control" id="universityPassword" [(ngModel)]="formData.password" name="password" required>
+  </div>
+  <button [routerLink]="['/pursuitmanager']" class="btn btn-primary">Signup</button>
+</form>
+<form *ngIf="selectedForm === 'company'" (ngSubmit)="onSubmit()">
+  <h2>Training Registration</h2>
+  <div class="form-group">
+    <label for="companyEmail">Email</label>
+    <input type="email" class="form-control" id="companyEmail" [(ngModel)]="formData.email" name="email" required>
+  </div>
+  <div class="form-group">
+    <label for="company">Password</label>
+    <input type="password" class="form-control" id="companyPassword" [(ngModel)]="formData.password" name="password" required>
+  </div>
+  <button [routerLink]="['/training']" class="btn btn-primary">Signup</button>
+</form>
+<form *ngIf="selectedForm === 'coordinators'" (ngSubmit)="onSubmit()">
+  <h2>Coordinaators Registration</h2>
+  <div class="form-group">
+    <label for="companyEmail">Email</label>
+    <input type="email" class="form-control" id="companyEmail" [(ngModel)]="formData.email" name="email" required>
+  </div>
+  <div class="form-group">
+    <label for="company">Password</label>
+    <input type="password" class="form-control" id="companyPassword" [(ngModel)]="formData.password" name="password" required>
+  </div>
+  <button [routerLink]="['/coordinators']" class="btn btn-primary">Signup</button>
+</form>
+
+

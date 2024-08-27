@@ -1,0 +1,81 @@
+<app-navbar></app-navbar>
+
+<!-- Hero Section -->
+<div class="hero-section">
+  <h1>Comprehensive and effective Placement Portal</h1>
+  <p>Where the appropriate set of opportunities meet the best collection of skills.</p>
+  <button class="contact-btn" (click)="contactUs()">Contact Us For More</button>
+</div>
+
+<div class="header">
+  <div class="header-item">
+    <span>45000+</span>
+    <span>Students</span>
+  </div>
+  <div class="header-item">
+    <span>312+</span>
+    <span>Programs</span>
+  </div>
+  <div class="header-item">
+    <span>11280+</span>
+    <span>Recruiters</span>
+  </div>
+</div>
+
+<div class="content-container">
+  <div class="content">
+    <h2>Trainers</h2>
+    <p>providing guidance, mentoring and support that focus on performance improvement of the candidate</p>
+    <a href="/signup" class="image-button">
+      <img src="assests\images\training.jpg" alt="For Universities">
+    </a>
+  </div>
+  <div class="content">
+    <h2>Student</h2>
+    <p> A student placement is any unpaid practice education experience</p>
+    <a href="/signup" class="image-button">
+      <img src="assests/images/student1.jpg" alt="For Students">
+    </a>
+  </div>
+  <div class="content">
+    <h2>Pursuit manager</h2>
+    <p>A pursuit manager is responsible for recruiting, training </p>
+    <a href="/signup" class="image-button">
+      <img src="assests/images/p1.jpg" alt="For Companies">
+    </a>
+  </div>
+  <div class="content">
+    <h2>Coordinators</h2>
+    <p> industry partners, organizing placement drives, providing career guidance, and to equipping students </p>
+    <a href="/signup" class="image-button">
+      <img src="assests/images/coordinators.jpg" alt="For Companies">
+    </a>
+  </div>
+</div>
+
+<style>
+  .header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .header-item {
+    text-align: center;
+    margin: 10px;
+  }
+  .content-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  .content {
+    flex: 1;
+    margin: 10px;
+    max-width: 30%;
+  }
+  .image-button img {
+    width: 100%;
+    height: auto;
+  }
+</style>
+<app-footer></app-footer>

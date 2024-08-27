@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="sidebar">
+        <h2>drapcode</h2>
+        <ul>
+            <li><a routerLink="/home"><i class="fas fa-home"></i> Home</a></li>
+            <li><a routerLink="/jobs"><i class="fas fa-briefcase"></i> Jobs</a></li>
+            <li><a routerLink="/pages"><i class="fas fa-file-alt"></i> Pages</a></li>
+            <li><a routerLink="/applied-jobs"><i class="fas fa-tasks"></i> Applied Jobs</a></li>
+            <li><a routerLink="/profile"><i class="fas fa-user"></i> My Profile</a></li>
+            <li><a href="#"><i class="fas fa-sign-out-alt"></i> Log Out</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <h2>Jobs</h2>
+        <div class="job-card" *ngFor="let job of jobs">
+            <div class="job-info">
+                <h3>{{ job.name }}</h3>
+                <p>{{ job.description }}</p>
+                <p>{{ job.details }}</p>
+            </div>
+            <div class="job-logo">
+                <img [src]="job.logo" alt="{{ job.name }} logo">
+            </div>
+            <div class="job-action">
+                <button class="apply-button">Apply Now</button>
+            </div>
+        </div>
+    </div>
+</div>

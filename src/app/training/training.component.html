@@ -1,0 +1,60 @@
+<app-sidenav></app-sidenav>
+
+
+
+<div class="content">
+    <form formGroup="trainingForm" (ngSubmit)="submitTraining()" class="training-form">
+        <!-- Campus Dropdown -->
+         <br>
+         <br>
+        <h2>Training Session Details</h2>
+        <div class="form-group">
+            <label for="campus">Select Campus</label>
+            <select id="campus" formControlName="campus" required>
+                <option value="vizianagaram">Vizianagaram</option>
+                <option value="bhubaneswar">Bhubaneswar</option>
+                <option value="parlakhemundi">Parlakhemundi</option>
+                <option value="chatrapur">Chatrapur</option>
+                <option value="rayagada">Rayagada</option>
+            </select>
+        </div>
+
+        <!-- Stream Dropdown -->
+        <div class="form-group">
+            <label for="stream">Select Stream</label>
+            <select id="stream" formControlName="stream" required>
+                <option value="btech">B.Tech</option>
+                <option value="mech">Mech</option>
+                <option value="bba">BBA</option>
+                <option value="diploma">Diploma</option>
+                <option value="mtech">M.Tech</option>
+            </select>
+        </div>
+
+        <!-- Venue Field -->
+        <div class="form-group">
+            <label for="venue">Venue</label>
+            <input type="text" id="venue" formControlName="venue" required>
+        </div>
+
+        <!-- Name of the Trainer Field -->
+        <div class="form-group">
+            <label for="trainerName">Name of the Trainer</label>
+            <input type="text" id="trainerName" formControlName="trainerName" required>
+        </div>
+
+        <!-- Date Field -->
+        <div class="form-group">
+            <label for="date">Date</label>
+            <input type="date" id="date" formControlName="date" required>
+        </div>
+
+        <!-- Time Field -->
+        <div class="form-group">
+            <label for="time">Time</label>
+            <input type="time" id="time" formControlName="time" required>
+        </div>
+
+            <button type="submit"  class="submit-button">Submit</button>
+        </form>
+    </div>

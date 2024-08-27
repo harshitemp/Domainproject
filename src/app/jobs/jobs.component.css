@@ -1,0 +1,94 @@
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    background-color: #2a2d45;
+    color: white;
+    width: 250px;
+    padding: 20px;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align items to the left */
+}
+
+.sidebar h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    width: 100%; /* Ensure the ul takes up full width */
+}
+
+.sidebar ul li {
+    margin: 15px 0;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    width: 100%; /* Ensure the anchor tag takes up full width */
+    text-align: left; /* Align text to the left */
+}
+
+.sidebar ul li a i {
+    margin-right: 10px;
+}
+
+.content {
+    flex-grow: 1;
+    background-color: #f4f6fc;
+    padding: 40px;
+}
+
+.content h2 {
+    margin-bottom: 20px;
+}
+
+.job-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.job-info h3 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.job-info p {
+    margin: 5px 0;
+    color: #666;
+}
+
+.job-logo img {
+    width: 80px;
+    height: auto;
+    margin-right: 20px;
+}
+
+.apply-button {
+    background-color: #6f42c1;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.apply-button:hover {
+    background-color: #5a32a0;
+}

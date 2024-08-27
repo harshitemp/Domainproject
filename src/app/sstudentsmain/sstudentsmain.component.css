@@ -1,0 +1,177 @@
+/* General Styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  height: 100vh; /* Ensure the body takes full height */
+  overflow: hidden; /* Prevents body overflow due to content */
+}
+
+.sidebar {
+  width: 200px;
+  background-color: #0b032d;
+  color: white;
+  height: 100vh;
+  padding-top: 20px;
+  position: fixed; /* Fix the sidebar in place */
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the content horizontally */
+}
+
+.sidebar h2 {
+  margin-bottom: 30px;
+  font-size: 24px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  width: 100%; /* Ensure the list takes the full width */
+}
+
+.sidebar ul li {
+  padding: 15px;
+  text-align: center;
+}
+
+.sidebar ul li a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  font-size: 18px;
+  width: 100%; /* Make the links full width */
+  padding: 10px 0;
+  text-align: center; /* Center the text within the link */
+}
+
+.sidebar ul li a:hover {
+  background-color: #232147;
+  border-radius: 5px;
+}
+
+.content {
+  margin-left: 200px; /* Account for the width of the fixed sidebar */
+  padding: 20px;
+  background-color: #f1f1f1;
+  width: calc(100% - 200px); /* Full width minus the sidebar */
+  overflow-y: auto; /* Allow vertical scrolling if content overflows */
+  box-sizing: border-box;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.user-info img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.user-info h2 {
+  margin: 0;
+  font-size: 24px;
+  color: #0b032d;
+}
+
+.user-info p {
+  margin: 5px 0 0;
+  color: #555;
+}
+
+.actions button {
+  background-color: #0b032d;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+
+.actions button:hover {
+  background-color: #232147;
+}
+
+.summary {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.summary .card {
+  background-color: white;
+  padding: 20px;
+  width: 22%;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.summary .card h3 {
+  font-size: 36px;
+  color: #0b032d;
+  margin: 0;
+}
+
+.summary .card p {
+  margin: 10px 0 0;
+  font-size: 18px;
+  color: #555;
+}
+
+.recommended-jobs h2 {
+  font-size: 24px;
+  color: #0b032d;
+  margin-bottom: 20px;
+}
+
+.recommended-jobs table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.recommended-jobs table th, 
+.recommended-jobs table td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.recommended-jobs table th {
+  background-color: #f2f2f2;
+}
+
+.recommended-jobs table td {
+  color: #555;
+}
+
+.recommended-jobs table td .apply-button {
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: #0b032d;
+  color: white;
+}
+
+.recommended-jobs table td .apply-button:hover {
+  background-color: #232147;
+}

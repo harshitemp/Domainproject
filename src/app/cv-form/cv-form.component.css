@@ -1,0 +1,59 @@
+/* General Styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+}
+
+.content {
+  margin-left: 250px; /* Adjusted to account for the sidebar width */
+  padding: 20px;
+  background-color: #f1f1f1;
+  width: calc(100% - 250px); /* Full width minus the sidebar */
+}
+
+/* Form Styles */
+form {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 20px auto; /* Center form horizontally */
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 16px;
+  color: #555;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+.btn{
+  background-color: aquamarine;
+}
+.button{
+  background-color: rgb(3, 112, 184);
+}
+.butt{
+  background-color: goldenrod;
+}

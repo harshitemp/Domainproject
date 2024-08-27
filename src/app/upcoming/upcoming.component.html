@@ -1,0 +1,34 @@
+<app-sidenav></app-sidenav>
+<div class="container">
+<br>
+  <br>
+    <h2>Training Session Details</h2>
+    <form (ngSubmit)="submitTraining()">
+      <label><input type="checkbox" (ngModel)="campusDrives.tcs" name="tcs"> TCS</label><br>
+      <label><input type="checkbox" (ngModel)="campusDrives.wipro" name="wipro"> WIPRO</label><br>
+      <label><input type="checkbox" (ngModel)="campusDrives.accenture" name="accenture"> ACCENTURE</label><br>
+      <button type="submit">Submit</button>
+    </form>
+  
+    <h2>Register for Campus Drive</h2>
+    <form (ngSubmit)="register()">
+      <label>Name:</label>
+      <input type="text" (ngModel)="registration.name" name="name" required><br>
+      <label>Registration Number:</label>
+      <input type="text" (ngModel)="registration.regNumber" name="regNumber" required><br>
+      <label>Select Stream:</label>
+      <select (ngModel)="registration.stream" name="stream" required>
+        <option value="CSE">CSE</option>
+        <option value="CSE">MECH</option>
+        <option value="CSE">DIPLOMA</option>
+        <option value="CSE">BBA</option>
+        <option value="CSE">M.TECH</option>
+      </select><br>
+      <label>Mobile Number:</label>
+      <input type="text" (ngModel)="registration.mobile" name="mobile" required><br>
+      <label>Campuses:</label><br>
+      <label><input type="checkbox" (ngModel)="registration.campuses.vizianagaram" name="vizianagaram"> Vizianagaram</label><br>
+      <label><input type="checkbox" (ngModel)="registration.campuses.bhubaneswar" name="bhubaneswar"> Bhubaneswar</label><br>
+      <button type="submit">Register</button>
+    </form>
+  </div>

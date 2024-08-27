@@ -1,0 +1,44 @@
+.header {
+    text-align: center;
+    padding: 50px 0;
+    background-color: #1e1e36;
+    color: white;
+  }
+  
+  .image-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    padding: 50px 0;
+  }
+  
+  .image-button {
+    text-align: center;
+    color: #333;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .image-button img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+  }
+  
+  .image-button span {
+    display: block;
+    margin-top: 10px;
+    font-size: 1.2em;
+  }
+  
+  form {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 50px;
+  }
+  

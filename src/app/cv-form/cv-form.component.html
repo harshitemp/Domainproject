@@ -1,0 +1,87 @@
+  <app-topnav></app-topnav>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+
+
+ 
+
+<form (ngSubmit)="onSubmit()" #cvForm="ngForm">
+  <h2>Generate Your CV</h2>
+
+  <!-- Name -->
+  <div class="form-group">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" [(ngModel)]="cv.name" required>
+  </div>
+
+  <!-- Email -->
+  <div class="form-group">
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" [(ngModel)]="cv.email" required>
+  </div>
+
+  <!-- Phone -->
+  <div class="form-group">
+    <label for="phone">Phone:</label>
+    <input type="tel" id="phone" name="phone" [(ngModel)]="cv.phone" required>
+  </div>
+
+  <!-- Address -->
+  <div class="form-group">
+    <label for="address">Address:</label>
+    <input type="text" id="address" name="address" [(ngModel)]="cv.address" required>
+  </div>
+
+  <!-- Education -->
+  <div class="form-group">
+    <label for="education">Education:</label>
+    <textarea id="education" name="education" [(ngModel)]="cv.education" required></textarea>
+  </div>
+
+  <!-- Experience -->
+  <div class="form-group">
+    <label for="experience">Experience:</label>
+    <textarea id="experience" name="experience" [(ngModel)]="cv.experience" required></textarea>
+  </div>
+
+  <!-- Skills -->
+  <div class="form-group">
+    <label for="skills">Skills:</label>
+    <textarea id="skills" name="skills" [(ngModel)]="cv.skills" required></textarea>
+  </div>
+
+  <!-- Summary -->
+  <div class="form-group">
+    <label for="summary">Summary:</label>
+    <textarea id="summary" name="summary" [(ngModel)]="cv.summary" required></textarea>
+  </div>
+
+  <!-- Languages -->
+  <div class="form-group">
+    <label for="languages">Languages:</label>
+    <textarea id="languages" name="languages" [(ngModel)]="cv.languages" required></textarea>
+  </div>
+
+  <button type="submit" class="btn">Generate PDF</button>
+</form>
+<h2>Your generated CV as PDF</h2>
+<p><strong>Name:</strong> {{cv.name}}</p>
+<p><strong>Email:</strong> {{cv.email}}</p>
+<p><strong>Phone:</strong> {{cv.phone}}</p>
+<p><strong>Address:</strong> {{cv.address}}</p>
+<p><strong>Education:</strong> {{cv.education}}</p>
+<p><strong>Experience:</strong> {{cv.experience}}</p>
+<p><strong>Skills:</strong> {{cv.skills}}</p>
+<p><strong>Summary:</strong> {{cv.summary}}</p>
+<p><strong>Languages:</strong> {{cv.languages}}</p>
+<div >
+  <button (click)="downloadPDF()"class="button">Download PDF</button>
+  <button (click)="shareWhatsApp()"class="butt">Share on WhatsApp</button>
+  <button (click)="shareGmail()"class="button">Share via Gmail</button>
+  <button (click)="copyLink()"class="butt">Copy Link Address</button>
+
+</div>
