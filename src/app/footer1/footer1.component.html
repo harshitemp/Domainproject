@@ -1,0 +1,55 @@
+<footer class="footer bg-light py-4">
+    <div class="container">
+      <!-- Questions Dropdown -->
+      <div class="dropdown mb-3">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#generalQuestions" aria-expanded="false" aria-controls="generalQuestions">
+          General Questions
+        </button>
+        <div class="collapse" id="generalQuestions">
+          <ul class="list-group mt-2">
+            <li class="list-group-item" *ngFor="let question of generalQuestions">{{ question }}</li>
+          </ul>
+          <button class="btn btn-link" (click)="toggleAddQuestion('general')">Add Question</button>
+          <div *ngIf="showAddQuestion['general']">
+            <input type="text" [(ngModel)]="newQuestion.general" placeholder="Enter your question" class="form-control mt-2" />
+            <button class="btn btn-primary mt-2" (click)="addQuestion('general')">Submit</button>
+          </div>
+          
+        </div>
+      </div>
+  
+      <!-- Technical Questions Dropdown -->
+      <div class="dropdown mb-3">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#technicalQuestions" aria-expanded="false" aria-controls="technicalQuestions">
+          Technical Questions
+        </button>
+        <div class="collapse" id="technicalQuestions">
+          <ul class="list-group mt-2">
+            <li class="list-group-item" *ngFor="let question of technicalQuestions">{{ question }}</li>
+          </ul>
+          <button class="btn btn-link" (click)="toggleAddQuestion('technical')">Add Question</button>
+          <div *ngIf="showAddQuestion['technical']">
+            <input type="text" [(ngModel)]="newQuestion.technical" placeholder="Enter your question" class="form-control mt-2" />
+            <button class="btn btn-primary mt-2" (click)="addQuestion('technical')">Submit</button>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Personal Technical Questions Dropdown -->
+      <div class="dropdown mb-3">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#personalTechnicalQuestions" aria-expanded="false" aria-controls="personalTechnicalQuestions">
+          Personal Technical Questions
+        </button>
+        <div class="collapse" id="personalTechnicalQuestions">
+          <ul class="list-group mt-2">
+            <li class="list-group-item" *ngFor="let question of personalTechnicalQuestions">{{ question }}</li>
+          </ul>
+          <button class="btn btn-link" (click)="toggleAddQuestion('personalTechnical')">Add Question</button>
+          <div *ngIf="showAddQuestion['personalTechnical']">
+            <input type="text" [(ngModel)]="newQuestion.personalTechnical" placeholder="Enter your question" class="form-control mt-2" />
+            <button class="btn btn-primary mt-2" (click)="addQuestion('personalTechnical')">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>

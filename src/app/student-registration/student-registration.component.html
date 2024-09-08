@@ -1,0 +1,259 @@
+<!-- student-registration.component.html -->
+<app-topnav></app-topnav>
+<br>
+<br>
+<br>
+
+<form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">    <!-- Basic Information -->
+    <h3>Basic Information</h3>
+    
+<div>
+  <label for="fullName">Full Name:</label>
+  <input id="fullName" formControlName="fullName" type="text" />
+  <div *ngIf="registrationForm.get('fullName')?.invalid && registrationForm.get('fullName')?.touched">
+    Full Name is required.
+  </div>
+</div>
+
+    <div>
+      <label for="dob">Date of Birth:</label>
+      <input id="dob" formControlName="dob" type="date" />
+    </div>
+    
+    <div>
+      <label for="gender">Gender:</label>
+      <select id="gender" formControlName="gender">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+    
+    <div>
+      <label for="contactNumber">Contact Number:</label>
+      <input id="contactNumber" formControlName="contactNumber" type="text" />
+    </div>
+    
+    <div>
+      <label for="email">Email Address:</label>
+      <input id="email" formControlName="email" type="email" />
+    </div>
+    
+    <div>
+      <label for="address">Address:</label>
+      <textarea id="address" formControlName="address"></textarea>
+    </div>
+  
+    <!-- Educational Details -->
+<h3>Educational Details</h3>
+<div>
+  <label for="degree">Degree/Program:</label>
+  <select id="degree" formControlName="degree">
+    <option value="">Select Degree/Program</option>
+    <option value="btech">B.Tech</option>
+    <option value="bsc">B.Sc</option>
+    <option value="bba">BBA</option>
+    <option value="mtech">M.Tech</option>
+    <!-- Add more degree options as needed -->
+  </select>
+</div>
+
+<div>
+  <label for="department">Department:</label>
+  <select id="department" formControlName="department">
+    <option value="">Select Department</option>
+    <option value="computer-science">Computer Science</option>
+    <option value="mechanical">Mechanical Engineering</option>
+    <option value="electrical">Electrical Engineering</option>
+    <option value="civil">Civil Engineering</option>
+    <option value="it">Information Technology</option>
+    <option value="management">Management</option>
+    <option value="biotech">Biotechnology</option>
+    <!-- Add more departments as needed -->
+  </select>
+</div>
+
+<div>
+    <label for="college">College/University:</label>
+    <select id="college" formControlName="college">
+      <option value="">Select College/University</option>
+      <option value="iit-bombay">Indian Institute of Technology (IIT) Bombay</option>
+      <option value="iit-delhi">Indian Institute of Technology (IIT) Delhi</option>
+      <option value="iit-kanpur">Indian Institute of Technology (IIT) Kanpur</option>
+      <option value="iit-madras">Indian Institute of Technology (IIT) Madras</option>
+      <option value="iit-kharagpur">Indian Institute of Technology (IIT) Kharagpur</option>
+      <option value="iit-roorkee">Indian Institute of Technology (IIT) Roorkee</option>
+      <option value="iit-guwahati">Indian Institute of Technology (IIT) Guwahati</option>
+      <option value="iit-hyderabad">Indian Institute of Technology (IIT) Hyderabad</option>
+      <option value="iit-bhubaneswar">Indian Institute of Technology (IIT) Bhubaneswar</option>
+      <option value="iit-indore">Indian Institute of Technology (IIT) Indore</option>
+      <option value="iit-patna">Indian Institute of Technology (IIT) Patna</option>
+      <option value="iit-mandi">Indian Institute of Technology (IIT) Mandi</option>
+      <option value="iit-jodhpur">Indian Institute of Technology (IIT) Jodhpur</option>
+      <option value="iit-gandhinagar">Indian Institute of Technology (IIT) Gandhinagar</option>
+      <option value="iit-rpr">Indian Institute of Technology (IIT) Ropar</option>
+      <option value="iit-bhu">Indian Institute of Technology (BHU) Varanasi</option>
+      <option value="iit-tirupati">Indian Institute of Technology (IIT) Tirupati</option>
+      <option value="iit-goa">Indian Institute of Technology (IIT) Goa</option>
+      <option value="nit-warangal">National Institute of Technology (NIT) Warangal</option>
+      <option value="nit-trichy">National Institute of Technology (NIT) Tiruchirappalli</option>
+      <option value="nit-surathkal">National Institute of Technology (NIT) Surathkal</option>
+      <option value="nit-rourkela">National Institute of Technology (NIT) Rourkela</option>
+      <option value="nit-kurukshetra">National Institute of Technology (NIT) Kurukshetra</option>
+      <option value="nit-calicut">National Institute of Technology (NIT) Calicut</option>
+      <option value="nit-durgapur">National Institute of Technology (NIT) Durgapur</option>
+      <option value="nit-jaipur">National Institute of Technology (NIT) Jaipur</option>
+      <option value="nit-allahabad">National Institute of Technology (NIT) Allahabad</option>
+      <option value="iit-nit">National Institute of Technology (NIT) Nagpur</option>
+      <option value="iit-silchar">National Institute of Technology (NIT) Silchar</option>
+      <option value="iit-srinagar">National Institute of Technology (NIT) Srinagar</option>
+      <option value="vnit-nagpur">Visvesvaraya National Institute of Technology (VNIT) Nagpur</option>
+      <option value="bits-pilani">Birla Institute of Technology and Science (BITS) Pilani</option>
+      <option value="bits-goa">Birla Institute of Technology and Science (BITS) Goa</option>
+      <option value="bits-hyderabad">Birla Institute of Technology and Science (BITS) Hyderabad</option>
+      <option value="iiit-hyderabad">International Institute of Information Technology (IIIT) Hyderabad</option>
+      <option value="iiit-bangalore">International Institute of Information Technology (IIIT) Bangalore</option>
+      <option value="iiit-delhi">Indraprastha Institute of Information Technology (IIIT) Delhi</option>
+      <option value="iiit-allahabad">Indian Institute of Information Technology (IIIT) Allahabad</option>
+      <option value="jnu-delhi">Jawaharlal Nehru University (JNU) Delhi</option>
+      <option value="du-delhi">University of Delhi (DU)</option>
+      <option value="mu-mumbai">University of Mumbai</option>
+      <option value="pu-chandigarh">Panjab University, Chandigarh</option>
+      <option value="au-anamalai">Andhra University</option>
+      <option value="osmania-hyd">Osmania University, Hyderabad</option>
+      <option value="cu-bhu">Calcutta University</option>
+      <option value="bu-bangalore">Bangalore University</option>
+      <option value="cu-gujarat">Gujarat University</option>
+      <option value="pune-univ">Savitribai Phule Pune University</option>
+      <option value="jain-univ">Jain University, Bangalore</option>
+      <option value="manipal">Manipal Academy of Higher Education</option>
+      <option value="vit-vellore">Vellore Institute of Technology (VIT), Vellore</option>
+      <option value="vit-chennai">Vellore Institute of Technology (VIT), Chennai</option>
+      <option value="srm-ktr">SRM Institute of Science and Technology, Kattankulathur</option>
+      <option value="srm-rmp">SRM Institute of Science and Technology, Ramapuram</option>
+      <option value="chennai-university">University of Madras, Chennai</option>
+      <option value="amity-noida">Amity University, Noida</option>
+      <option value="lpu-jalandhar">Lovely Professional University (LPU), Jalandhar</option>
+      <option value="sharda-noida">Sharda University, Noida</option>
+      <option value="christ-bangalore">Christ University, Bangalore</option>
+      <option value="iisc-bangalore">Indian Institute of Science (IISc), Bangalore</option>
+      <option value="pesu-bangalore">PES University, Bangalore</option>
+      <option value="rvce-bangalore">R.V. College of Engineering, Bangalore</option>
+      <option value="mit-manipal">Manipal Institute of Technology (MIT), Manipal</option>
+      <option value="ait-pune">Army Institute of Technology, Pune</option>
+      <option value="psg-coimbatore">PSG College of Technology, Coimbatore</option>
+      <option value="kiit-bhubaneswar">Kalinga Institute of Industrial Technology (KIIT), Bhubaneswar</option>
+      <option value="cusat-kochi">Cochin University of Science and Technology (CUSAT), Kochi</option>
+      <option value="au-coimbatore">Anna University, Chennai</option>
+      <option value="panjab-univ">Panjab University, Chandigarh</option>
+      <option value="vjti-mumbai">Veermata Jijabai Technological Institute (VJTI), Mumbai</option>
+      <option value="vssut-burla">Veer Surendra Sai University of Technology (VSSUT), Burla</option>
+      <option value="nitie-mumbai">National Institute of Industrial Engineering (NITIE), Mumbai</option>
+      <option value="msr-it-bangalore">MS Ramaiah Institute of Technology, Bangalore</option>
+      <option value="nit-dgp">National Institute of Technology, Durgapur</option>
+      <option value="mit-meerut">Meerut Institute of Technology</option>
+      <option value="pes-mysore">PES College of Engineering, Mysore</option>
+      <option value="centurion-ap">Centurion University of Technology and Management, Andhra Pradesh</option>
+      <option value="centurion-bhubaneswar">Centurion University of Technology and Management, Bhubaneswar</option>
+      <option value="centurion-paralakhemundi">Centurion University of Technology and Management, Paralakhemundi</option>
+      <option value="centurion-chatrapur">Centurion University of Technology and Management, Chatrapur</option>
+      <!-- More entries can be added here if required -->
+    </select>
+  </div>
+  
+
+  
+    <div>
+      <label for="yearOfPassing">Year of Passing:</label>
+      <input id="yearOfPassing" formControlName="yearOfPassing" type="date" />
+    </div>
+  
+    <div>
+      <label for="percentage">Percentage/CGPA:</label>
+      <input id="percentage" formControlName="percentage" type="text" />
+    </div>
+  
+    <!-- Training Details -->
+    <h3>Training Details</h3>
+    <div>
+      <label for="completedTrainings">Completed Trainings:</label>
+      <textarea id="completedTrainings" formControlName="completedTrainings"></textarea>
+    </div>
+  
+    <div>
+      <label for="skills">Skills Acquired:</label>
+      <textarea id="skills" formControlName="skills"></textarea>
+    </div>
+  
+    <div>
+      <label for="preferredTraining">Preferred Training:</label>
+      <textarea id="preferredTraining" formControlName="preferredTraining"></textarea>
+    </div>
+  
+    <!-- Placement Information -->
+    <h3>Placement Information</h3>
+    <div>
+      <label for="interestedInPlacement">Interested in Placement?</label>
+      <input id="interestedInPlacement" formControlName="interestedInPlacement" type="checkbox" />
+    </div>
+  
+    <div>
+      <label for="preferredJobRoles">Preferred Job Roles:</label>
+      <textarea id="preferredJobRoles" formControlName="preferredJobRoles"></textarea>
+    </div>
+  
+    <div>
+      <label for="preferredLocation">Preferred Location:</label>
+      <textarea id="preferredLocation" formControlName="preferredLocation"></textarea>
+    </div>
+  
+    
+  
+    <div>
+      <label for="linkedin">LinkedIn Profile URL:</label>
+      <input id="linkedin" formControlName="linkedin" type="text" />
+    </div>
+  
+    <div>
+      <label for="portfolio">Portfolio/Website URL:</label>
+      <input id="portfolio" formControlName="portfolio" type="text" />
+    </div>
+  
+    <!-- Additional Information -->
+    <h3>Additional Information</h3>
+    <div>
+      <label for="extracurricularActivities">Extracurricular Activities:</label>
+      <textarea id="extracurricularActivities" formControlName="extracurricularActivities"></textarea>
+    </div>
+  
+    <div>
+      <label for="languagesKnown">Languages Known:</label>
+      <textarea id="languagesKnown" formControlName="languagesKnown"></textarea>
+    </div>
+  
+    <div>
+      <label for="achievements">Achievements:</label>
+      <textarea id="achievements" formControlName="achievements"></textarea>
+    </div>
+  
+    <div>
+      <label for="additionalInformation">Any Additional Information:</label>
+      <textarea id="additionalInformation" formControlName="additionalInformation"></textarea>
+    </div>
+  
+    <!-- Declaration -->
+    <!-- Declaration Checkbox -->
+<div>
+  <input id="declaration" formControlName="declaration" type="checkbox" />
+  <label for="declaration">I hereby declare that the information provided is true and correct</label>
+  <div *ngIf="registrationForm.get('declaration')?.invalid && registrationForm.get('declaration')?.touched">
+    You must declare that the information is correct.
+  </div>
+</div>
+
+  
+    <!-- Submit Button -->
+    <button type="submit">Submit</button>  
+  </form>
+  <app-footer1></app-footer1>
+  <app-feedback></app-feedback>

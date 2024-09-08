@@ -1,19 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router'; // Import Router service
+import { Router } from '@angular/router';
+import { TopnavallComponent } from "../topnavall/topnavall.component";
+import { FeedbackComponent } from "../feedback/feedback.component";
+import { Footer1Component } from "../footer1/footer1.component";
 
 @Component({
   selector: 'app-pursuitmanager',
-  standalone:true,
+  standalone: true,
   templateUrl: './pursuitmanager.component.html',
   styleUrls: ['./pursuitmanager.component.css'],
+  imports: [TopnavallComponent, FeedbackComponent, Footer1Component],
 })
 export class PursuitmanagerComponent implements OnInit {
-  
+
   recruitmentForm: FormGroup;
   isDateSelected: boolean = true; // Default to showing date input
+  selectedDate: string = '';
+  weekSelection: string = '';
 
-  constructor(private fb: FormBuilder, private router: Router) { // Inject Router here
+  constructor(private fb: FormBuilder, private router: Router) {
     this.recruitmentForm = this.fb.group({
       recruiterName: ['', Validators.required],
       recruitmentType: ['date', Validators.required],
@@ -40,6 +46,20 @@ export class PursuitmanagerComponent implements OnInit {
 
     this.recruitmentForm.get('recruitmentDates')?.updateValueAndValidity();
     this.recruitmentForm.get('recruitmentWeek')?.updateValueAndValidity();
+  }
+
+  onDateChange(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    const date = new Date(input.value);
+    this.selectedDate = this.formatDate(date);
+    this.recruitmentForm.get('recruitmentDates')?.setValue(this.selectedDate);
+  }
+
+  formatDate(date: Date): string {
+    const day = ('0' + date.getDate()).slice(-2);
+    const month = ('0' + (date.getMonth() + 1)).slice(-2);
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
   }
 
   onSubmit(): void {

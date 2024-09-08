@@ -1,0 +1,114 @@
+.admin-form {
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f8f8f8;
+  }
+  
+  .placement-container {
+    width: 80%;
+    margin: 20px auto;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .placement-header {
+    background-color: #a62821;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .placement-content {
+    max-height: 300px; /* Adjust as needed */
+    overflow-y: auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .student-entry {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #e1e1e1;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+  }
+  
+  .student-photo {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+  
+  .student-details {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .student-details div {
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .placement-content::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .placement-content::-webkit-scrollbar-thumb {
+    background-color: #a62821;
+    border-radius: 3px;
+  }
+  .placement-container {
+    width: 80%;
+    margin: 20px auto;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .placement-header {
+    background-color: #a62821;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .placement-content {
+    max-height: 300px; /* Adjust as needed */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .student-entry {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #e1e1e1;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+  }
+  
+  .student-photo {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+  
+  

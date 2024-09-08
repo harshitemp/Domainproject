@@ -13,11 +13,19 @@ import { PursuitmanagerComponent } from './pursuitmanager/pursuitmanager.compone
 import { TrainingComponent } from './training/training.component';
 import { CvFormComponent } from './cv-form/cv-form.component';
 import { TopnavComponent } from './topnav/topnav.component';
+import { StudentRegistrationComponent } from './student-registration/student-registration.component';
+import { Footer1Component } from './footer1/footer1.component';
+import { ReminderComponent } from './reminder/reminder.component';
+import { ScheduleMeetingComponent } from './schedule-meeting/schedule-meeting.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { FeedbackComponent } from './feedback/feedback.component';
+import { ViewPlacementComponent } from './view-placement/view-placement.component';
+import { CoordinatorsdashboardComponent } from './coordinatorsdashboard/coordinatorsdashboard.component';
 // constSidenavComponent require("./sidenav/sidenav.component")
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,HomeComponent,CvFormComponent,UpcomingComponent,TrainingComponent,TopnavComponent,PursuitmanagerComponent,NavbarComponent,SignupComponent,SidenavComponent,LoginComponent,FooterComponent,ContactComponent,HeaderloginComponent],
+  imports: [RouterOutlet,ReminderComponent,ViewPlacementComponent,FeedbackComponent,SidebarComponent,CoordinatorsdashboardComponent,ScheduleMeetingComponent,FeedbackComponent,HomeComponent,Footer1Component,CvFormComponent,StudentRegistrationComponent,UpcomingComponent,TrainingComponent,TopnavComponent,PursuitmanagerComponent,NavbarComponent,SignupComponent,SidenavComponent,LoginComponent,FooterComponent,ContactComponent,HeaderloginComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

@@ -1,59 +1,90 @@
-/* General Styles */
-body {
-  margin: 0;
+.cv-container {
+  width: 800px;
+  margin: 0 auto;
+  border: 1px solid #ddd;
+  padding: 20px;
   font-family: Arial, sans-serif;
+  color: #333;
   display: flex;
+  flex-direction: row;
 }
 
-.content {
-  margin-left: 250px; /* Adjusted to account for the sidebar width */
-  padding: 20px;
-  background-color: #f1f1f1;
-  width: calc(100% - 250px); /* Full width minus the sidebar */
+.cv-header {
+  background-color: #f4f4f4;
+  padding: 10px;
+  text-align: center;
 }
 
-/* Form Styles */
-form {
-  background-color: white;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  max-width: 600px;
-  margin: 20px auto; /* Center form horizontally */
+.cv-header h1 {
+  background-color: #f2cc70;
+  padding: 10px;
+  margin-bottom: 20px;
+  font-size: 24px;
 }
 
-.form-group {
+.cv-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cv-left {
+  flex: 1;
+  padding-right: 10px;
+}
+
+.cv-right {
+  flex: 1;
+  padding-left: 10px;
+  border-left: 1px solid #ddd;
+}
+
+.cv-section {
   margin-bottom: 20px;
 }
 
-label {
-  display: block;
-  margin-bottom: 5px;
-  font-size: 16px;
-  color: #555;
+.cv-section h2 {
+  color: #d1ad45;
+  font-size: 18px;
+  border-bottom: 2px solid #d1ad45;
+  padding-bottom: 5px;
 }
 
-input[type="text"],
-input[type="email"],
-textarea {
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  box-sizing: border-box;
+.cv-photo {
+  text-align: center;
+  border: 1px dashed #aaa;
+  padding: 20px;
+  margin-bottom: 20px;
 }
 
-textarea {
-  resize: vertical;
-  min-height: 100px;
+.cv-photo p {
+  font-size: 14px;
+  color: #999;
 }
-.btn{
-  background-color: aquamarine;
+
+.cv-contact p {
+  font-size: 14px;
+  margin: 5px 0;
 }
-.button{
-  background-color: rgb(3, 112, 184);
+
+.cv-actions {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 30px;
 }
-.butt{
-  background-color: goldenrod;
+
+.cv-actions button {
+  background-color: #d1ad45;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.cv-actions button:hover {
+  background-color: #b7950b;
 }

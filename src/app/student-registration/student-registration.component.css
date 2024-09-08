@@ -1,0 +1,124 @@
+/* Global Styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f1f1f1;
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  min-height: 100vh; /* Ensure body takes the full viewport height */
+  overflow: hidden; /* Prevents scrollbars from appearing */
+}
+
+/* Form Container */
+form {
+  max-width: 800px;
+  width: 100%;
+  background-color: #ffffff;
+  padding: 20px;
+  margin: 20px; /* Adds space around the form */
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: auto; /* Allows scrolling within the form if the content overflows */
+}
+
+/* Section Headers */
+h3 {
+  font-size: 20px;
+  color: #333;
+  border-bottom: 2px solid #0b032d;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+/* Form Groups */
+div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* Label Styling */
+label {
+  font-size: 14px;
+  color: #555;
+  font-weight: bold;
+}
+
+/* Input Fields Styling */
+input[type="text"],
+input[type="date"],
+input[type="email"],
+input[type="file"],
+select,
+textarea {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+input[type="email"]:focus,
+input[type="file"]:focus,
+select:focus,
+textarea:focus {
+  border-color: #0b032d;
+  outline: none;
+}
+
+/* Checkbox Styling */
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin-top: 5px;
+}
+
+/* Textarea Styling */
+textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+/* Submit Button Styling */
+button[type="submit"] {
+  background-color: #0b032d;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #232147;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  form {
+    padding: 15px;
+  }
+
+  h3 {
+    font-size: 18px;
+  }
+
+  label {
+    font-size: 13px;
+  }
+
+  button[type="submit"] {
+    font-size: 14px;
+  }
+}

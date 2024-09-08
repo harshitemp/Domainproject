@@ -1,0 +1,20 @@
+.rating-stars {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .rating-stars li {
+    cursor: pointer;
+  }
+  
+  .rating-stars .fa-star {
+    color: #ddd; /* Default star color */
+  }
+  
+  .rating-stars .fa-star.text-gold {
+    color: gold; /* Gold color for selected stars */
+  }
+  
