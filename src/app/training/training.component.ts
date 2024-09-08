@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router'; // Import Router
 import { SidenavComponent } from '../sidenav/sidenav.component';
+import { Footer1Component } from "../footer1/footer1.component";
+import { FeedbackComponent } from "../feedback/feedback.component";
 
 @Component({
   selector: 'app-training',
   standalone:true,
-  imports:[SidenavComponent],
+  imports: [SidenavComponent, Footer1Component, FeedbackComponent],
   templateUrl: './training.component.html',
   styleUrls: ['./training.component.css']
 })

@@ -1,0 +1,31 @@
+<div class="mx-0 mx-sm-auto">
+    <div class="card">
+      <div class="card-body">
+  
+        <form class="px-2" (ngSubmit)="onSubmit()">
+  
+          <div class="rating-section">
+            <p class="text-center"><strong>How do you rate customer support:</strong></p>
+            <ul class="rating-stars">
+              <li *ngFor="let star of stars; let i = index" (click)="rate(i + 1)">
+                <i class="fa fa-star fa-sm"
+                   [ngClass]="{'fas': rating >= i + 1, 'far': rating < i + 1, 'text-gold': rating >= i + 1}"
+                   title="{{ star }}"></i>
+              </li>
+            </ul>
+          </div>
+  
+          <p class="text-center"><strong>What could we improve?</strong></p>
+  
+          <!-- Message input -->
+          <div data-mdb-input-init class="form-outline mb-4">
+            <textarea class="form-control" id="form4Example6" rows="4" [(ngModel)]="feedback" name="feedback"></textarea>
+            <label class="form-label" for="form4Example6">Your feedback</label>
+          </div>
+        </form>
+      </div>
+      <div class="card-footer text-end">
+        <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary" (click)="onSubmit()">Submit</button>
+      </div>
+    </div>
+  </div>

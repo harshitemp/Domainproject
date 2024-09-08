@@ -1,0 +1,30 @@
+<app-sidebar></app-sidebar>
+<app-topnavall></app-topnavall>
+<br>
+<br>
+<div class="placement-section">
+    <h3>View Placement Status</h3>
+    
+    <!-- File Input for Excel Upload -->
+    <input type="file" (change)="onFileChange($event)" accept=".xlsx, .xls" />
+  
+    <!-- Button to View Placement -->
+    <button (click)="viewPlacement()">View Placement</button>
+  
+    <!-- Table to Display Excel Data -->
+    <table *ngIf="excelData.length > 0">
+      <thead>
+        <tr>
+          <th *ngFor="let header of excelHeaders">{{ header }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of excelData">
+          <td *ngFor="let cell of row">{{ cell }}</td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <!-- Display Status Message (Optional) -->
+    <p *ngIf="placementStatus">{{ placementStatus }}</p>
+  </div>

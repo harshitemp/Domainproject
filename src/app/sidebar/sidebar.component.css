@@ -1,0 +1,50 @@
+/* Sidebar styles */
+.sidebar {
+    background-color: #0b032d; /* Dark background color */
+    width: 250px; /* Fixed width for the sidebar */
+    height: 100vh; /* Full viewport height */
+    position: fixed; /* Sticks the sidebar to the left side */
+    top: 0;
+    left: 0;
+    padding: 20px; /* Padding around the content */
+    color: white; /* Text color */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Subtle shadow to give depth */
+}
+
+.sidebar h2 {
+    color: #ffffff; /* White text color for the heading */
+    margin-bottom: 20px; /* Spacing below the heading */
+    font-size: 24px; /* Larger font size for the heading */
+    font-weight: bold; /* Bold heading */
+}
+
+.sidebar ul {
+    list-style: none; /* Removes default bullet points */
+    padding: 0; /* Removes padding */
+    margin: 0; /* Removes margin */
+}
+
+.sidebar ul li {
+    margin-bottom: 10px; /* Spacing between list items */
+}
+
+.sidebar ul li a {
+    color: #ffffff; /* Text color */
+    text-decoration: none; /* Removes underline */
+    font-weight: bold; /* Bold text */
+    display: flex; /* Flex layout for aligning icon and text */
+    align-items: center; /* Vertically centers items */
+    padding: 10px 15px; /* Padding inside the link */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+}
+
+.sidebar ul li a i {
+    margin-right: 10px; /* Space between icon and text */
+}
+
+.sidebar ul li a:hover {
+    background-color: #575b61; /* Background color change on hover */
+    color: #ffffff; /* Text color on hover */
+    cursor: pointer; /* Pointer cursor on hover */
+}

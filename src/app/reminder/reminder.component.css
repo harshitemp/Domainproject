@@ -1,0 +1,40 @@
+/* Style for the reminder section */
+.reminder-section {
+    margin-left: 250px; /* Align with sidebar width */
+    padding: 20px;
+    background-color: #f9f9f9;
+    color: #333;
+    min-height: calc(100vh - 60px); /* Adjust height based on header and footer */
+}
+
+.reminder-section h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.reminder-section input[type="number"],
+.reminder-section input[type="text"],
+.reminder-section select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.reminder-section button {
+    background-color: #2449e0;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.reminder-section button:hover {
+    background-color: #1e3a7a;
+}

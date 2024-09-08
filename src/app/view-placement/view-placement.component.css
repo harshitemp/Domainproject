@@ -1,0 +1,59 @@
+/* Ensure the content is properly aligned with the sidebar */
+.placement-section {
+    margin-left: 250px; /* Match the width of the sidebar */
+    padding: 20px;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Styling for the table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Styling for the file input and buttons */
+input[type="file"] {
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: #2449e0;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #1e3a7a;
+}
+
+/* Optional: Styling for status message */
+p {
+    font-size: 16px;
+    color: #666;
+    margin-top: 20px;
+}

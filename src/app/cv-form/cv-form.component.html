@@ -1,87 +1,86 @@
+<div class="cv-container">
   <app-topnav></app-topnav>
   <br>
   <br>
-  <br>
-  <br>
-  <br>
+  <form [formGroup]="cvForm">
+    <div class="cv-header">
+      <h1>{{ cvForm.get('name')?.value }}</h1>
+    </div>
 
-
-
- 
-
-<form (ngSubmit)="onSubmit()" #cvForm="ngForm">
-  <h2>Generate Your CV</h2>
-
-  <!-- Name -->
-  <div class="form-group">
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" [(ngModel)]="cv.name" required>
+    <div class="cv-content">
+      <div class="cv-left">
+    <!-- Skills Section -->
+<div class="cv-section">
+  <h2>Skills</h2>
+  <div *ngFor="let skill of skills.controls; let i = index">
+    <label for="skill-{{ i }}">Enter your skill</label>
+    <input [formControl]="getFormControl(skill)" id="skill-{{ i }}" placeholder="Enter a skill" />
   </div>
-
-  <!-- Email -->
-  <div class="form-group">
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" [(ngModel)]="cv.email" required>
-  </div>
-
-  <!-- Phone -->
-  <div class="form-group">
-    <label for="phone">Phone:</label>
-    <input type="tel" id="phone" name="phone" [(ngModel)]="cv.phone" required>
-  </div>
-
-  <!-- Address -->
-  <div class="form-group">
-    <label for="address">Address:</label>
-    <input type="text" id="address" name="address" [(ngModel)]="cv.address" required>
-  </div>
-
-  <!-- Education -->
-  <div class="form-group">
-    <label for="education">Education:</label>
-    <textarea id="education" name="education" [(ngModel)]="cv.education" required></textarea>
-  </div>
-
-  <!-- Experience -->
-  <div class="form-group">
-    <label for="experience">Experience:</label>
-    <textarea id="experience" name="experience" [(ngModel)]="cv.experience" required></textarea>
-  </div>
-
-  <!-- Skills -->
-  <div class="form-group">
-    <label for="skills">Skills:</label>
-    <textarea id="skills" name="skills" [(ngModel)]="cv.skills" required></textarea>
-  </div>
-
-  <!-- Summary -->
-  <div class="form-group">
-    <label for="summary">Summary:</label>
-    <textarea id="summary" name="summary" [(ngModel)]="cv.summary" required></textarea>
-  </div>
-
-  <!-- Languages -->
-  <div class="form-group">
-    <label for="languages">Languages:</label>
-    <textarea id="languages" name="languages" [(ngModel)]="cv.languages" required></textarea>
-  </div>
-
-  <button type="submit" class="btn">Generate PDF</button>
-</form>
-<h2>Your generated CV as PDF</h2>
-<p><strong>Name:</strong> {{cv.name}}</p>
-<p><strong>Email:</strong> {{cv.email}}</p>
-<p><strong>Phone:</strong> {{cv.phone}}</p>
-<p><strong>Address:</strong> {{cv.address}}</p>
-<p><strong>Education:</strong> {{cv.education}}</p>
-<p><strong>Experience:</strong> {{cv.experience}}</p>
-<p><strong>Skills:</strong> {{cv.skills}}</p>
-<p><strong>Summary:</strong> {{cv.summary}}</p>
-<p><strong>Languages:</strong> {{cv.languages}}</p>
-<div >
-  <button (click)="downloadPDF()"class="button">Download PDF</button>
-  <button (click)="shareWhatsApp()"class="butt">Share on WhatsApp</button>
-  <button (click)="shareGmail()"class="button">Share via Gmail</button>
-  <button (click)="copyLink()"class="butt">Copy Link Address</button>
-
+  <button type="button" (click)="addSkill()">Add Skill</button>
 </div>
+
+<!-- Projects Section -->
+<div class="cv-section">
+  <h2>Project Undertaken</h2>
+  <div *ngFor="let project of projects.controls; let i = index">
+    <label for="project-{{ i }}">Enter project URL</label>
+    <input [formControl]="getFormControl(project)" id="project-{{ i }}" placeholder="Enter a project URL" />
+  </div>
+  <button type="button" (click)="addProject()">Add Project</button>
+</div>
+
+<!-- Education Section -->
+<div class="cv-section">
+  <h2>Education</h2>
+  <div *ngFor="let edu of education.controls; let i = index">
+    <label for="education-{{ i }}">Enter your education details</label>
+    <input [formControl]="getFormControl(edu)" id="education-{{ i }}" placeholder="Enter education" />
+  </div>
+  <button type="button" (click)="addEducation()">Add Education</button>
+</div>
+
+<!-- Social Media Links -->
+<div class="cv-section">
+  <h2>Social Media Links</h2>
+  <div *ngFor="let link of socialMedia.controls; let i = index">
+    <label for="social-media-{{ i }}">Enter social media link</label>
+    <input [formControl]="getFormControl(link)" id="social-media-{{ i }}" placeholder="Enter a social media link" />
+  </div>
+  <button type="button" (click)="addSocialMedia()">Add Social Media</button>
+</div>
+<div class="cv-right">
+  <div class="cv-photo">
+    <p *ngIf="!uploadedImageUrl">SPACE FOR PHOTOGRAPH</p>
+    <img *ngIf="uploadedImageUrl" [src]="uploadedImageUrl" alt="Uploaded Image" class="uploaded-photo" />
+    <button type="button" (click)="openImageEditor()">Edit Image</button>
+  </div>
+   <!-- Objective Section -->
+   <div class="cv-section">
+    <h2>Objective</h2>
+    <label for="objective">Enter objective</label>
+    <input formControlName="summary" id="objective" placeholder="Enter objective" />
+  </div>
+  <!-- Contact Information -->
+  
+
+<!-- Languages Section -->
+<div class="cv-section">
+  <h2>Languages</h2>
+  <div *ngFor="let language of languages.controls; let i = index">
+    <label for="language-{{ i }}">Enter a language</label>
+    <input [formControl]="getFormControl(language)" id="language-{{ i }}" placeholder="Enter a language" />
+  </div>
+  <button type="button" (click)="addLanguage()">Add Language</button>
+</div>
+
+
+
+    <!-- Action Buttons -->
+    <div class="cv-actions">
+      <button type="button" (click)="downloadPDF()">Download PDF</button>
+      <button type="button" (click)="shareWhatsApp()">Share on WhatsApp</button>
+      <button type="button" (click)="shareGmail()">Share via Gmail</button>
+      <button type="button" (click)="copyLink()">Copy Link Address</button>
+    </div>
+</div>
+

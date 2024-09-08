@@ -1,14 +1,18 @@
-<app-sidenav></app-sidenav>
+<app-topnav></app-topnav>
 <div class="container">
 <br>
   <br>
-    <h2>Training Session Details</h2>
-    <form (ngSubmit)="submitTraining()">
-      <label><input type="checkbox" (ngModel)="campusDrives.tcs" name="tcs"> TCS</label><br>
-      <label><input type="checkbox" (ngModel)="campusDrives.wipro" name="wipro"> WIPRO</label><br>
-      <label><input type="checkbox" (ngModel)="campusDrives.accenture" name="accenture"> ACCENTURE</label><br>
-      <button type="submit">Submit</button>
-    </form>
+  <h2>Training Session Details</h2>
+  <form (ngSubmit)="submitTraining()">
+    <label><input type="checkbox" [(ngModel)]="campusDrives['tcs']" name="tcs"> TCS</label><br>
+    <label><input type="checkbox" [(ngModel)]="campusDrives['wipro']" name="wipro"> WIPRO</label><br>
+    <label><input type="checkbox" [(ngModel)]="campusDrives['accenture']" name="accenture"> ACCENTURE</label><br>
+    <div *ngFor="let company of additionalCompanies">
+      <label><input type="checkbox" [(ngModel)]="campusDrives[company]" [name]="company"> {{ company | uppercase }}</label><br>
+    </div>
+    <button type="button" (click)="addCompany()">Add More</button><br><br>
+    <button type="submit">Submit</button>
+  </form>
   
     <h2>Register for Campus Drive</h2>
     <form (ngSubmit)="register()">
