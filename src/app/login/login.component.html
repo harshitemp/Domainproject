@@ -35,7 +35,7 @@
     <label for="studentPassword">Password</label>
     <input type="password" class="form-control" id="studentPassword" [(ngModel)]="formData.password" name="password" required>
   </div>
-  <button [routerLink]="['/sstudentsmain']" class="btn btn-primary">Login</button>
+  <button [routerLink]="['/student-registration']" class="btn btn-primary">Login</button>
 </form>
 
 <form *ngIf="selectedForm === 'university'" (ngSubmit)="onSubmit()">
