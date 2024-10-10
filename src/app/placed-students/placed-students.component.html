@@ -1,40 +1,10 @@
-<!-- Admin Form for Adding New Students -->
-<div class="admin-form">
-    <form [formGroup]="studentForm" (ngSubmit)="addStudent()">
-      <label for="name">Name:</label>
-      <input id="name" formControlName="name" placeholder="Enter Name" required />
-  
-      <label for="uid">Pro. UID No:</label>
-      <input id="uid" formControlName="uid" placeholder="Enter UID" required />
-  
-      <label for="section">Section:</label>
-      <input id="section" formControlName="section" placeholder="Enter Section" required />
-  
-      <label for="company">Placed in:</label>
-      <input id="company" formControlName="company" placeholder="Enter Company Name" required />
-  
-      <label for="photo">Photo:</label>
-      <input type="file" (change)="onImageSelected($event)" />
-  
-      <button type="submit">Submit</button>
-    </form>
+<div class="stack">
+  <div class="content card">
+    <p><b><span id="desktop-prompt">Hover</span><span id="mobile-prompt">Tap</span> me!</b></p>
+    <p>I'm just some example text content so there's something inside this box, nothing much to see here.</p>
   </div>
-  
-  <!-- Display Scrolling List of Placed Students -->
-  <div class="placement-container">
-    <div class="placement-header">
-      <h2>Current Placed Students</h2>
-    </div>
-    <div class="placement-content" style="max-height: 400px; overflow-y: auto;">
-      <div class="student-entry" *ngFor="let student of students">
-        <img [src]="student.photoUrl" alt="Student Photo" class="student-photo" style="width: 50px; height: 50px;" />
-        <div class="student-details">
-          <div><strong>Name:</strong> {{ student.name }}</div>
-          <div><strong>Pro. UID No:</strong> {{ student.uid }}</div>
-          <div><strong>Section:</strong> {{ student.section }}</div>
-          <div><strong>Placed in:</strong> {{ student.company }}</div>
-        </div>
-      </div>
-    </div>
-  </div>
-  
+  <div class="padding card"></div>
+  <div class="border card"></div>
+  <div class="background card"></div>
+  <div class="box-shadow card"></div>
+</div>

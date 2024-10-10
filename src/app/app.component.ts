@@ -21,11 +21,12 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { ViewPlacementComponent } from './view-placement/view-placement.component';
 import { CoordinatorsdashboardComponent } from './coordinatorsdashboard/coordinatorsdashboard.component';
+import { ButtonComponent } from './button/button.component';
 // constSidenavComponent require("./sidenav/sidenav.component")
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,ReminderComponent,ViewPlacementComponent,FeedbackComponent,SidebarComponent,CoordinatorsdashboardComponent,ScheduleMeetingComponent,FeedbackComponent,HomeComponent,Footer1Component,CvFormComponent,StudentRegistrationComponent,UpcomingComponent,TrainingComponent,TopnavComponent,PursuitmanagerComponent,NavbarComponent,SignupComponent,SidenavComponent,LoginComponent,FooterComponent,ContactComponent,HeaderloginComponent],
+  imports: [RouterOutlet,ReminderComponent,ButtonComponent,ViewPlacementComponent,FeedbackComponent,SidebarComponent,CoordinatorsdashboardComponent,ScheduleMeetingComponent,FeedbackComponent,HomeComponent,Footer1Component,CvFormComponent,StudentRegistrationComponent,UpcomingComponent,TrainingComponent,TopnavComponent,PursuitmanagerComponent,NavbarComponent,SignupComponent,SidenavComponent,LoginComponent,FooterComponent,ContactComponent,HeaderloginComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

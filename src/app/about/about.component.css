@@ -1,155 +1,193 @@
-body {
-    font-family: Arial, sans-serif;
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    background-color: #f9f9f9;
-    color: #333;
 }
 
-header, footer {
-    color: rgb(3, 2, 41);
-    text-align: center;
-    padding: 20px 0;
-    text-decoration: bold;
-}
-
-header h1, footer p {
-    margin: 0;
-}
-
-nav ul {
-    list-style: none;
-    padding: 0;
+.about-us {
     display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-
-nav ul li {
-    display: inline;
-}
-
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-main {
-    background-color: white;
-    padding: 40px 20px;
-    margin: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.intro, .team, .mission {
-    margin-bottom: 40px;
-}
-
-.team {
-    display: flex;
-    flex-direction: column;
     align-items: center;
-    background-color: #f9f9f9;
-    padding: 50px;
-    border-radius: 100px;
+    padding: 40px;
+    background: #f0f8ff; /* Light blue background */
 }
 
-.team-members {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 10px;
-    width: 100%;
-    justify-items: center; /* Center the images */
+.content {
+    max-width: 600px;
+    margin-right: 40px;
 }
 
-.team-members img {
-    width: 500px;
-    height: auto;
-    border-radius: 20px;
+h2 {
+    font-size: 2rem;
+    color: #333;
+    line-height: 1.2;
 }
 
-.team-member {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    text-align: center;
+.highlight {
+    color: #32cd32; /* LimeGreen for highlight */
 }
 
-.team-member img {
-    border-radius: 50%;
-    width: 300px;
-    height: 200px;
+p {
+    margin: 20px 0;
+    font-size: 1rem;
+    color: #555;
 }
 
-.team-member:hover img {
-    transform: scale(1.1);
-}
-
-/* Contact Details Section Styles */
-#contactDetails {
-    display: none;
-    margin-top: 20px;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    background-color: #f9f9f9;
-}
-
-#contactDetails h2 {
-    margin-top: 0;
-}
-
-#contactDetails p {
-    margin-bottom: 5px;
-}
-.contactButton {
-    width: 140px;
-    height: 50px;
-    background-color: rgb(27, 80, 205); /* Solid blue color */
-    color: #fff;
-    border-radius: 50px;
+.signup-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #ff4500; /* OrangeRed button color */
+    color: white;
     border: none;
-    outline: none;
+    border-radius: 5px;
     cursor: pointer;
-    position: relative;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
-    overflow: hidden;
-    display: block;
-    margin: 20px auto;
-    text-align: center;
+    transition: background-color 0.3s, transform 0.3s ease;
 }
 
-  
-.contactButton span {
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: top 0.5s;
+/* Button hover effect */
+.signup-button:hover {
+    background-color: #ff6347; /* Tomato color on hover */
+    transform: scale(1.05); /* Button grows slightly on hover */
 }
-  
-.contactButton-text-one {
-    position: absolute;
-    width: 100%;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
+
+/* Hover effect for image container */
+.image-container img {
+    max-width: 100%;
+    border-radius: 10px;
+    animation: fadeIn 1s ease-in-out;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-  
-.contactButton-text-two {
-    position: absolute;
-    width: 100%;
-    top: 150%;
-    left: 0;
-    transform: translateY(-50%);
+
+/* Image hover effect: zoom and shadow */
+.image-container img:hover {
+    transform: scale(1.05); /* Image zooms slightly */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Shadow effect */
 }
-  
-.contactButton:hover .contactButton-text-one {
-    top: -100%;
+
+/* Hover effect for section background color */
+.mission:hover {
+    background-color: #b2ebf2; /* Slightly darker Light Cyan on hover */
+    transition: background-color 0.3s ease;
 }
-  
-.contactButton:hover .contactButton-text-two {
-    top: 50%;
+
+.vision-values:hover {
+    background-color: #e0dab2; /* Slightly darker beige on hover */
+    transition: background-color 0.3s ease;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Slide-up animation */
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Apply fade-in to the whole section */
+.about-us,
+.mission,
+.vision-values {
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Apply slide-up for text and image */
+.section-text,
+.section-image {
+    animation: slideUp 1s ease-in-out;
+}
+
+/* Delay image animation slightly */
+.section-image {
+    animation-delay: 0.5s;
+}
+
+.signup-button {
+    transition: transform 0.3s ease;
+}
+
+.signup-button:hover {
+    transform: scale(1.05);
+}
+
+/* Styling to keep sections neat */
+.about-us {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px;
+}
+
+.about-us .content {
+    max-width: 50%;
+}
+
+.about-section {
+    padding: 40px;
+}
+
+/* Colors for the mission section */
+.mission {
+    background-color: #e0f7fa; /* Light Cyan background */
+    color: #004d40; /* Dark Teal text */
+}
+
+.section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.section-image {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.section-image img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.section-text {
+    flex: 2;
+    padding-left: 20px;
+}
+
+/* Heading colors */
+.section h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.section p {
+    font-size: 1.2rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Colors for Vision and Values section */
+.vision-values {
+    background-color: #f5f5dc; /* Beige background */
+    color: #8b4513; /* SaddleBrown text */
+}
+
+.mission .section-text {
+    text-align: left;
+}
+
+.vision-values .section-text {
+    text-align: left;
 }

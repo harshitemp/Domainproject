@@ -1,0 +1,25 @@
+.recruiters-heading {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 10px; /* Adjust margin below the heading */
+  }
+  
+  .logo-grid {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 80vh; /* Adjust height */
+  }
+  
+  .logo-item img {
+    width: 900px; /* Increase the width of the image */
+    height: auto; /* Maintain the aspect ratio */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add smooth transition for hover effects */
+  }
+  
+  .logo-item img:hover {
+    transform: scale(1.1); /* Scale image to 110% of its original size on hover */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+  }
+  
