@@ -23,6 +23,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { ViewPlacementComponent } from './view-placement/view-placement.component';
 import { CoordinatorsdashboardComponent } from './coordinatorsdashboard/coordinatorsdashboard.component';
+import { ButtonComponent } from './button/button.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -49,6 +50,7 @@ export const routes: Routes = [
     {path:'feedback',component:FeedbackComponent},
     {path:'view-placement',component:ViewPlacementComponent},
     {path:'coordinatorsdashboard',component:CoordinatorsdashboardComponent},
+    {path:'button',component:ButtonComponent},
 ];
 
 @NgModule({

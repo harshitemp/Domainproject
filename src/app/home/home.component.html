@@ -1,52 +1,99 @@
 <app-navbar></app-navbar>
 
-<!-- Hero Section -->
-<div class="hero-section">
-  <h1>Comprehensive and effective Placement Portal</h1>
-  <p>Where the appropriate set of opportunities meet the best collection of skills.</p>
-  <button class="contact-btn" (click)="contactUs()">Contact Us For More</button>
+<!-- Large Header Section -->
+<div id="large-header" class="large-header">
+  <canvas id="demo-canvas"></canvas>
+  <br>
+  <br>
+  <h1 class="main-title">Comprehensive and effective Placement Portal</h1>
+  <br>
+  <br>
+  <br>
+  <!-- Remove space before (click) -->
 </div>
 
+<!-- Hero Section -->
 <div class="header">
   <div class="header-item">
-    <span>45000+</span>
-    <span>Students</span>
+    <span class="number">45000+</span>
+    <span class="label">Students</span>
   </div>
   <div class="header-item">
-    <span>312+</span>
-    <span>Programs</span>
+    <span class="number">312+</span>
+    <span class="label">Programs</span>
   </div>
   <div class="header-item">
-    <span>11280+</span>
-    <span>Recruiters</span>
+    <span class="number">11280+</span>
+    <span class="label">Recruiters</span>
   </div>
 </div>
 
-<app-placed-students></app-placed-students>
+<app-logo-grid></app-logo-grid>
 
 <style>
+  .large-header {
+    position: relative; /* Adjust positioning for layering */
+    overflow: hidden; /* Hide overflow to ensure clean edges */
+    color: white; /* Set text color to white */
+    text-align: center; /* Center align text */
+  }
+
+  #demo-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Ensure canvas is behind the text */
+  }
+
+  .main-title {
+    position: relative; /* Positioning to place it above canvas */
+    z-index: 2; /* Ensure it appears above the canvas */
+    font-size: 3em; /* Adjust font size as needed */
+    margin: 0; /* Remove default margin */
+  }
+
+  .hero-section {
+    padding: 50px 20px; /* Add padding for hero section */
+    text-align: center; /* Center align text */
+  }
+
   .header {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    background-color: black; /* Set the background color similar to the image */
+    padding: 20px 0; /* Add padding to the section */
   }
+
   .header-item {
     text-align: center;
     margin: 10px;
+    color: white; /* Set text color to white */
+    font-family: Arial, sans-serif; /* Optional: Adjust font-family */
+    transition: transform 0.3s, color 0.3s;
+    cursor: pointer;
   }
-  .content-container {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+
+  .header-item:hover {
+    transform: scale(1.1); /* Scale effect on hover */
+    color: #007bff; /* Change color on hover */
   }
-  .content {
-    flex: 1;
-    margin: 10px;
-    max-width: 30%;
+
+  .number {
+    display: block;
+    font-size: 2.5em; /* Larger font size for numbers */
+    font-weight: bold; /* Bold numbers */
+    color: #007bff; /* Blue color for the numbers */
+    margin-bottom: 5px;
   }
-  .image-button img {
-    width: 100%;
-    height: auto;
+
+  .label {
+    display: block;
+    font-size: 1.2em; /* Smaller font for labels */
+    color: white;
   }
 </style>
+
 <app-footer></app-footer>
