@@ -1,5 +1,7 @@
+// view-placement.component.ts
 import { Component } from '@angular/core';
 import * as XLSX from 'xlsx';
+import { HttpClient } from '@angular/common/http';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { TopnavallComponent } from '../topnavall/topnavall.component';
 import { CommonModule } from '@angular/common'; // Import CommonModule
@@ -7,14 +9,17 @@ import { CommonModule } from '@angular/common'; // Import CommonModule
 @Component({
   selector: 'app-view-placement',
   standalone: true,
-  imports: [CommonModule, SidebarComponent, TopnavallComponent], // Add CommonModule here
+  imports: [CommonModule, SidebarComponent, TopnavallComponent],
   templateUrl: './view-placement.component.html',
   styleUrls: ['./view-placement.component.css']
 })
 export class ViewPlacementComponent {
+  
   excelData: any[] = []; // Holds the rows of the Excel data
   excelHeaders: string[] = []; // Holds the headers of the Excel data
   placementStatus: string = ''; // Status message displayed in the UI
+
+  constructor(private http: HttpClient) {}
 
   // Handle the file change event when a file is uploaded
   onFileChange(event: any): void {
@@ -63,5 +68,36 @@ export class ViewPlacementComponent {
       return;
     }
     this.placementStatus = 'Displaying placement data.';
+  }
+
+  // Upload file to the server
+  uploadFileToServer(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      const formData = new FormData();
+      formData.append('file', file);
+
+      this.http.post('http://localhost:5000/api/upload', formData)
+        .subscribe(response => {
+          this.placementStatus = 'File uploaded successfully!';
+          this.getPlacements(); // Fetch placements after upload
+        }, error => {
+          this.placementStatus = 'Error uploading file!';
+          console.error('Upload error:', error);
+        });
+    }
+  }
+
+  // Fetch placements from the server
+  getPlacements() {
+    this.http.get<any[]>('http://localhost:5000/api/placements')
+      .subscribe(data => {
+        this.excelData = data;
+        if (data.length > 0) {
+          this.excelHeaders = Object.keys(data[0]); // Set headers based on data
+        }
+      }, error => {
+        console.error('Error fetching placements:', error);
+      });
   }
 }

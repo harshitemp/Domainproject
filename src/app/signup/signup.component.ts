@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common'; // Import CommonModule
 import { NavbarComponent } from '../navbar/navbar.component';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -13,23 +14,39 @@ import { RouterLink } from '@angular/router';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent {
+
   selectedForm: string | null = null;
   formData = {
     email: '',
     password: ''
   };
 
-  // Method to show the appropriate form
+  constructor(private http: HttpClient, private router: Router) {}
+
   showForm(formType: string) {
     this.selectedForm = formType;
   }
 
-  // Method to handle form submission
   onSubmit() {
     if (this.selectedForm) {
-      console.log('Form submitted for ${this.selectedForm}');
-      console.log(this.formData);
-      // Reset form data after submission
+      const userType = this.selectedForm;
+      const data = {
+        email: this.formData.email,
+        password: this.formData.password,
+        userType: userType
+      };
+
+      this.http.post('http://localhost:5000/api/register', data)
+        .subscribe(
+          (response: any) => {
+            console.log('User registered successfully', response);
+            this.router.navigate([`/${userType}`]);
+          },
+          (error) => {
+            console.error('Error registering user', error);
+          }
+        );
+
       this.formData = { email: '', password: '' };
     }
   }

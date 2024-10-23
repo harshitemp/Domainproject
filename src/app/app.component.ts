@@ -22,7 +22,7 @@ import { FeedbackComponent } from './feedback/feedback.component';
 import { ViewPlacementComponent } from './view-placement/view-placement.component';
 import { CoordinatorsdashboardComponent } from './coordinatorsdashboard/coordinatorsdashboard.component';
 import { ButtonComponent } from './button/button.component';
-// constSidenavComponent require("./sidenav/sidenav.component")
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -32,4 +32,5 @@ import { ButtonComponent } from './button/button.component';
 })
 export class AppComponent {
   title = 'MyProject';
+
 }

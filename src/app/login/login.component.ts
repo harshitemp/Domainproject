@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { HeaderloginComponent } from '../headerlogin/headerlogin.component';
 import { RouterLink } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-login',
   standalone: true,  // Mark it as a standalone component
@@ -20,23 +21,33 @@ import { RouterLink } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  selectedForm: string | null = null;
-  formData = {
-    email: '',
-    password: ''
-  };
+  selectedForm: string | undefined;
+  formData: any;
 
-  // Method to show the appropriate form
+
+  constructor(private http: HttpClient) {}
+
   showForm(formType: string) {
     this.selectedForm = formType;
   }
 
-  // Method to handle form submission
   onSubmit() {
     if (this.selectedForm) {
-      console.log('Form submitted for ${this.selectedForm}');
-      console.log(this.formData);
-      // Reset form data after submission
+      const loginData = {
+        email: this.formData.email,
+        password: this.formData.password,
+        userType: this.selectedForm
+      };
+
+      this.http.post('http://localhost:5000/api/users/login', loginData)
+        .subscribe(response => {
+          console.log('Login successful', response);
+          // Perform routing based on userType or show a success message
+        }, error => {
+          console.error('Login failed', error);
+          // Show an error message to the user
+        });
+
       this.formData = { email: '', password: '' };
     }
   }

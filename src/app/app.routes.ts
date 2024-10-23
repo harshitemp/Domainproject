@@ -6,7 +6,6 @@ import { ContactComponent } from './contact/contact.component';
 import { LoginComponent } from './login/login.component';
 import { HeaderloginComponent } from './headerlogin/headerlogin.component';
 import { SignupComponent } from './signup/signup.component';
-
 import { PursuitmanagerComponent } from './pursuitmanager/pursuitmanager.component';
 import { Header1Component } from './header1/header1.component';
 import { TrainingComponent } from './training/training.component';
@@ -24,6 +23,7 @@ import { FeedbackComponent } from './feedback/feedback.component';
 import { ViewPlacementComponent } from './view-placement/view-placement.component';
 import { CoordinatorsdashboardComponent } from './coordinatorsdashboard/coordinatorsdashboard.component';
 import { ButtonComponent } from './button/button.component';
+import { ApiService } from './api.service';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -51,6 +51,7 @@ export const routes: Routes = [
     {path:'view-placement',component:ViewPlacementComponent},
     {path:'coordinatorsdashboard',component:CoordinatorsdashboardComponent},
     {path:'button',component:ButtonComponent},
+    {path:'api',component:ApiService},
 ];
 
 @NgModule({

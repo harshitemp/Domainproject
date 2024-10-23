@@ -1,76 +1,55 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { TopnavallComponent } from "../topnavall/topnavall.component";
-import { FeedbackComponent } from "../feedback/feedback.component";
+import { HttpClient } from '@angular/common/http';
+import { TopnavallComponent } from '../topnavall/topnavall.component';
 import { Footer1Component } from "../footer1/footer1.component";
+import { FeedbackComponent } from "../feedback/feedback.component";
 
 @Component({
   selector: 'app-pursuitmanager',
-  standalone: true,
+  standalone:true,
+  imports: [TopnavallComponent, Footer1Component, FeedbackComponent],
   templateUrl: './pursuitmanager.component.html',
   styleUrls: ['./pursuitmanager.component.css'],
-  imports: [TopnavallComponent, FeedbackComponent, Footer1Component],
 })
 export class PursuitmanagerComponent implements OnInit {
-
   recruitmentForm: FormGroup;
-  isDateSelected: boolean = true; // Default to showing date input
-  selectedDate: string = '';
-  weekSelection: string = '';
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(private fb: FormBuilder, private router: Router, private http: HttpClient) {
     this.recruitmentForm = this.fb.group({
       recruiterName: ['', Validators.required],
-      recruitmentType: ['date', Validators.required],
-      recruitmentDates: [''],
-      recruitmentWeek: [''],
+      companyProfile: ['', Validators.required],
+      jobTitle: ['', Validators.required],
+      ctc: ['', Validators.required],
+      eligibility: ['', Validators.required],
+      skillSet: ['', Validators.required],
+      selectionProcess: ['', Validators.required],
+      location: ['', Validators.required],
+      trainingNeed: ['', Validators.required],
+      recruiterStatus: ['', Validators.required],
+      registrationDeadline: ['', Validators.required],
+      recruitmentDates: ['', Validators.required],
+      driveMode: ['', Validators.required],
+      additionalInfo: [''],
     });
   }
 
-  ngOnInit(): void {
-    this.toggleDateWeekSelection();
-  }
-
-  toggleDateWeekSelection(): void {
-    const recruitmentType = this.recruitmentForm.get('recruitmentType')?.value;
-    this.isDateSelected = recruitmentType === 'date';
-
-    if (this.isDateSelected) {
-      this.recruitmentForm.get('recruitmentDates')?.setValidators(Validators.required);
-      this.recruitmentForm.get('recruitmentWeek')?.clearValidators();
-    } else {
-      this.recruitmentForm.get('recruitmentWeek')?.setValidators(Validators.required);
-      this.recruitmentForm.get('recruitmentDates')?.clearValidators();
-    }
-
-    this.recruitmentForm.get('recruitmentDates')?.updateValueAndValidity();
-    this.recruitmentForm.get('recruitmentWeek')?.updateValueAndValidity();
-  }
-
-  onDateChange(event: Event): void {
-    const input = event.target as HTMLInputElement;
-    const date = new Date(input.value);
-    this.selectedDate = this.formatDate(date);
-    this.recruitmentForm.get('recruitmentDates')?.setValue(this.selectedDate);
-  }
-
-  formatDate(date: Date): string {
-    const day = ('0' + date.getDate()).slice(-2);
-    const month = ('0' + (date.getMonth() + 1)).slice(-2);
-    const year = date.getFullYear();
-    return `${day}/${month}/${year}`;
-  }
+  ngOnInit(): void {}
 
   onSubmit(): void {
     if (this.recruitmentForm.valid) {
-      console.log('Form Submitted', this.recruitmentForm.value);
-      // Handle form submission logic here
+      this.http.post('http://localhost:5000/api/recuritment', this.recruitmentForm.value)
+        .subscribe(response => {
+          console.log('Form Submitted', response);
+          // Handle success response here
+        }, error => {
+          console.error('Error submitting form', error);
+        });
     }
   }
 
   logout() {
-    // Perform any necessary logout operations here, such as clearing tokens or session data
-    this.router.navigate(['/home']); // Redirect to the home page
+    this.router.navigate(['/home']);
   }
 }

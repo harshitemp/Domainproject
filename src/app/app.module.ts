@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common'; // Import CommonModule
 
 import { StudentRegistrationComponent } from './student-registration/student-registration.component';
 import { CvFormComponent } from './cv-form/cv-form.component';
-
 @NgModule({
   declarations: [
   ],

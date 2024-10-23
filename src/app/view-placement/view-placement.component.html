@@ -6,7 +6,7 @@
     <h3>View Placement Status</h3>
     
     <!-- File Input for Excel Upload -->
-    <input type="file" (change)="onFileChange($event)" accept=".xlsx, .xls" />
+    <input type="file" (change)="onFileChange($event)" name="file" accept=".xlsx, .xls" />
   
     <!-- Button to View Placement -->
     <button (click)="viewPlacement()">View Placement</button>
