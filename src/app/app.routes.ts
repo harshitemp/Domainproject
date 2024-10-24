@@ -6,6 +6,7 @@ import { ContactComponent } from './contact/contact.component';
 import { LoginComponent } from './login/login.component';
 import { HeaderloginComponent } from './headerlogin/headerlogin.component';
 import { SignupComponent } from './signup/signup.component';
+
 import { PursuitmanagerComponent } from './pursuitmanager/pursuitmanager.component';
 import { Header1Component } from './header1/header1.component';
 import { TrainingComponent } from './training/training.component';
@@ -28,8 +29,8 @@ import { ApiService } from './api.service';
 export const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },
-    { path: 'about', component: AboutComponent },
     { path: 'contact', component: ContactComponent },
+    { path: 'about', component: AboutComponent },
     { path: 'login', component: LoginComponent },
     { path: 'header', component: HeaderloginComponent },
     
@@ -51,7 +52,7 @@ export const routes: Routes = [
     {path:'view-placement',component:ViewPlacementComponent},
     {path:'coordinatorsdashboard',component:CoordinatorsdashboardComponent},
     {path:'button',component:ButtonComponent},
-    {path:'api',component:ApiService},
+    {path:'api',component:ApiService}
 ];
 
 @NgModule({

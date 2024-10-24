@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NavbarComponent } from '../navbar/navbar.component';
+import { FormsModule } from '@angular/forms';
+
 @Component({
   selector: 'app-contact',
   standalone:true,
-  imports:[NavbarComponent],
+  imports:[NavbarComponent,FormsModule],
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.css']
 })
@@ -12,18 +14,9 @@ export class ContactComponent {
 contactForm: any;
   constructor(private http: HttpClient) {}
 
-  onSubmit(contactForm: any) {
-    const formData = contactForm.value;
+  
 
-    this.http.post('http://localhost:5000/api/contact', formData)
-      .subscribe(response => {
-        alert('Message sent successfully!');
-      }, error => {
-        alert('Failed to send message.');
-      });
-  }
-
-  // Chatbot functionality (unchanged)
+  //Chatbot functionality (unchanged)
   responses: { [key: string]: string } = {
     "hi": "Hello! How can I help you?",
     "how are you": "I'm just a chatbot, but thank you for asking!",
@@ -56,4 +49,17 @@ contactForm: any;
     chatWidget.style.display = chatWidget.style.display === "none" || chatWidget.style.display === "" ? "block" : "none";
   }
 
+
+
+onSubmit(contactForm: any) {
+  const formData = contactForm.value;
+
+apise
+//  this.http.post(, formData)
+//     .subscribe(response => {
+//       alert('Message sent successfully!');
+//     }, error => {
+//       alert('Failed to send message.');
+//     });
+}
 }
