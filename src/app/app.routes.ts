@@ -24,12 +24,13 @@ import { FeedbackComponent } from './feedback/feedback.component';
 import { ViewPlacementComponent } from './view-placement/view-placement.component';
 import { CoordinatorsdashboardComponent } from './coordinatorsdashboard/coordinatorsdashboard.component';
 import { ButtonComponent } from './button/button.component';
+import { ApiService } from './api.service';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },
-    { path: 'about', component: AboutComponent },
     { path: 'contact', component: ContactComponent },
+    { path: 'about', component: AboutComponent },
     { path: 'login', component: LoginComponent },
     { path: 'header', component: HeaderloginComponent },
     
@@ -51,6 +52,7 @@ export const routes: Routes = [
     {path:'view-placement',component:ViewPlacementComponent},
     {path:'coordinatorsdashboard',component:CoordinatorsdashboardComponent},
     {path:'button',component:ButtonComponent},
+    {path:'api',component:ApiService}
 ];
 
 @NgModule({

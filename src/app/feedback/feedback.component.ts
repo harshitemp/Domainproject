@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -10,34 +11,40 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   styleUrls: ['./feedback.component.css']
 })
 export class FeedbackComponent {
-  stars: string[] = ['Very Bad', 'Bad', 'Okay', 'Good', 'Excellent']; // Tooltip labels for stars
-  rating: number = 0; // To store the selected rating
-  feedback: string = ''; // To store the feedback text
+ 
+  stars: string[] = ['Very Bad', 'Bad', 'Okay', 'Good', 'Excellent'];
+  rating: number = 0;
+  feedback: string = '';
+  email: string = ''; // Add an email field
 
-  // Function to handle the rating click
+  constructor(private http: HttpClient) {}
+
   rate(index: number): void {
-    console.log('Rating clicked:', index);
     this.rating = index;
   }
 
-  // Function to handle form submission
   onSubmit(): void {
-    // Collect feedback data and log or send it to the backend
     const feedbackData = {
       rating: this.rating,
       feedback: this.feedback,
+      email: this.email // Collect email from a form field
     };
 
-    // Here, you would typically send this data to a server via an HTTP request.
-    console.log('Feedback submitted:', feedbackData);
-
-    // Reset form after submission
-    this.resetForm();
+    // Send data to the backend
+    this.http.post('http://localhost:5000/api/feedback', feedbackData)
+      .subscribe(response => {
+        console.log('Feedback submitted:', response);
+        alert('Thank you for your feedback!');
+        this.resetForm();
+      }, error => {
+        console.error('Error submitting feedback', error);
+        alert('Failed to submit feedback');
+      });
   }
 
-  // Reset the form fields
   resetForm(): void {
     this.rating = 0;
     this.feedback = '';
+    this.email = ''; // Reset email as well
   }
 }
