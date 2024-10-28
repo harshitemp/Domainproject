@@ -5,17 +5,19 @@ import { jsPDF } from 'jspdf';  // Import jsPDF for PDF generation
 import { CommonModule } from '@angular/common';
 import { Footer1Component } from "../footer1/footer1.component";
 import { FeedbackComponent } from "../feedback/feedback.component";
+import {  HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-cv-form',
   standalone: true,
-  imports: [ReactiveFormsModule, TopnavComponent, FormsModule, CommonModule, Footer1Component, FeedbackComponent],
+  imports: [ReactiveFormsModule, TopnavComponent, FormsModule, CommonModule, Footer1Component, FeedbackComponent,HttpClientModule],
   templateUrl: './cv-form.component.html',
   styleUrls: ['./cv-form.component.css']
 })
 export class CvFormComponent {
   cvForm: FormGroup;
   uploadedImageUrl: string | ArrayBuffer | null = null; // For storing uploaded image preview
+  http: any;
 
   constructor(private fb: FormBuilder) {
     // Initialize the form
@@ -138,4 +140,22 @@ export class CvFormComponent {
     navigator.clipboard.writeText(window.location.href);
     alert('Link copied to clipboard!');
   }
+  onSubmit() {
+    if (this.cvForm.valid) {
+      this.http.post('http://localhost:5000/api/upload', this.cvForm.value)
+        .subscribe({
+          next: (response: any) => {  // Define response type as 'any' or a specific type if known
+            alert('CV saved successfully!');
+            console.log(response);
+          },
+          error: (error: any) => {  // Define error type as 'any' or a specific type if known
+            console.error('Error saving CV', error);
+            alert('Failed to save CV. Please try again.');
+          }
+        });
+    } else {
+      alert('Please fill out the form correctly.');
+    }
+  }
+  
 }

@@ -1,13 +1,15 @@
 <app-navbar></app-navbar>
 
+<!-- Hero Section -->
 <div class="hero-section">
     <h1>Get in Touch</h1>
     <p>We'd love to hear from you! Reach out to us with any questions or concerns.</p>
 </div>
 
+<!-- Contact Form Section -->
 <div class="contact-content">
     <div class="contact-form">
-        <form  >
+        <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)" @fadeIn>
             <div class="form-group">
                 <label for="name">Your Name:</label>
                 <input type="text" id="name" name="name" ngModel required>
@@ -21,28 +23,43 @@
                 <textarea id="message" name="message" ngModel required></textarea>
             </div>
             <div class="form-group">
-                <input type="submit" value="Send Message" >
+                <input type="submit" value="Send Message" [disabled]="!contactForm.valid">
             </div>
         </form>
     </div>
 </div>
 
-<h3 style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;text-align: center;">
+<!-- Inquiry Heading -->
+<h3 style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; text-align: center;">
     If you have any questions?
 </h3>
+
+<!-- Social Icons Section -->
 <div class="social-icons">
-    <a href="https://www.instagram.com/centurion_universityap?igsh=MTVpbWI5eXN3ZmZiZA==" target="_blank"><i class="fab fa-instagram"></i></a>
-    <a href="https://youtube.com/@cutmapc_studios3894?si=BKLNyH0YfAgQXR9Y" target="_blank"><i class="fab fa-youtube"></i></a>
-    <a href="https://www.linkedin.com/school/centurion-university-of-technology-and-management/" target="_blank"><i class="fab fa-linkedin"></i></a>
-    <a href="https://www.facebook.com/CenturionUniversityAndhraPradesh?mibextid=ZbWKwL" target="_blank"><i class="fab fa-facebook"></i></a>
+    <a href="https://www.instagram.com/centurion_universityap?igsh=MTVpbWI5eXN3ZmZiZA==" target="_blank">
+        <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://youtube.com/@cutmapc_studios3894?si=BKLNyH0YfAgQXR9Y" target="_blank">
+        <i class="fab fa-youtube"></i>
+    </a>
+    <a href="https://www.linkedin.com/school/centurion-university-of-technology-and-management/" target="_blank">
+        <i class="fab fa-linkedin"></i>
+    </a>
+    <a href="https://www.facebook.com/CenturionUniversityAndhraPradesh?mibextid=ZbWKwL" target="_blank">
+        <i class="fab fa-facebook"></i>
+    </a>
 </div>
 
-<div id="chat-widget">
+<!-- Chatbot Widget Section -->
+<div id="chat-widget" style="display: none;">
     <div id="chat-container">
-        <div id="chat-box"></div>
+        <div id="chat-box" class="chat-box"></div>
         <input type="text" id="user-input" placeholder="Type your message...">
         <button (click)="sendMessage()">Send</button>
     </div>
 </div>
 
-<div id="chatbot-icon" (click)="toggleChatWidget()"></div>
+<!-- Chatbot Toggle Icon -->
+<div id="chatbot-icon" (click)="toggleChatWidget()">
+    <i class="fas fa-comment"></i>
+</div>

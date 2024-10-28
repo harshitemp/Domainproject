@@ -1,4 +1,5 @@
 <app-navbar></app-navbar>
+
 <div class="header">
   <h1>Login</h1>
   <p>Select User Type</p>
@@ -7,72 +8,39 @@
 <!-- Image Buttons -->
 <div class="image-buttons">
   <div class="image-button" (click)="showForm('student')">
-    <img src="assests\images\student1.jpg" alt="Student">
+    <img src="assests/images/student1.jpg" alt="Student">
     <span>Student</span>
   </div>
   <div class="image-button" (click)="showForm('university')">
-    <img src="assests\images\pursuitmanager.jpg" alt="Pursuitmanager">
+    <img src="assests/images/pursuitmanager.jpg" alt="Pursuitmanager">
     <span>Manager-CR</span>
   </div>
   <div class="image-button" (click)="showForm('company')">
-    <img src="assests\images\training.jpg" alt="Company">
+    <img src="assests/images/training.jpg" alt="Company">
     <span>Trainer</span>
   </div>
   <div class="image-button" (click)="showForm('coordinators')">
-    <img src="assests\images\coordinators.jpg" alt="Company">
+    <img src="assests/images/coordinators.jpg" alt="Coordinators">
     <span>Coordinators</span>
   </div>
 </div>
 
-<!-- Registration Forms -->
-<form *ngIf="selectedForm === 'student'" (ngSubmit)="onSubmit()">
-  <h2>Student Login</h2>
-  <div class="form-group">
-    <label for="studentEmail">Email</label>
-    <input type="email" class="form-control" id="studentEmail" [(ngModel)]="formData.email" name="email" required>
-  </div>
-  <div class="form-group">
-    <label for="studentPassword">Password</label>
-    <input type="password" class="form-control" id="studentPassword" [(ngModel)]="formData.password" name="password" required>
-  </div>
-  <button [routerLink]="['/student-registration']" class="btn btn-primary">Login</button>
-</form>
+<!-- Login Form using NgForm -->
+<form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" *ngIf="selectedForm">
+  <h2 *ngIf="selectedForm === 'student'">Student Login</h2>
+  <h2 *ngIf="selectedForm === 'university'">Manager-CR Login</h2>
+  <h2 *ngIf="selectedForm === 'company'">Trainer Login</h2>
+  <h2 *ngIf="selectedForm === 'coordinators'">Coordinators Login</h2>
 
-<form *ngIf="selectedForm === 'university'" (ngSubmit)="onSubmit()">
-  <h2>Manager-CR Login</h2>
   <div class="form-group">
-    <label for="universityEmail">Email</label>
-    <input type="email" class="form-control" id="universityEmail" [(ngModel)]="formData.email" name="email" required>
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" class="form-control" [(ngModel)]="formData.email" required>
   </div>
-  <div class="form-group">
-    <label for="universityPassword">Password</label>
-    <input type="password" class="form-control" id="universityPassword" [(ngModel)]="formData.password" name="password" required>
-  </div>
-  <button [routerLink]="['/pursuitmanager']" class="btn btn-primary">Login</button>
-</form>
-<form *ngIf="selectedForm === 'company'" (ngSubmit)="onSubmit()">
-  <h2>Trainer Login</h2>
-  <div class="form-group">
-    <label for="companyEmail">Email</label>
-    <input type="email" class="form-control" id="companyEmail" [(ngModel)]="formData.email" name="email" required>
-  </div>
-  <div class="form-group">
-    <label for="company">Password</label>
-    <input type="password" class="form-control" id="companyPassword" [(ngModel)]="formData.password" name="password" required>
-  </div>
-  <button [routerLink]="['/training']" class="btn btn-primary">Login</button>
-</form>
-<form *ngIf="selectedForm === 'coordinators'" (ngSubmit)="onSubmit()">
-  <h2>Coordinaators Login</h2>
-  <div class="form-group">
-    <label for="companyEmail">Email</label>
-    <input type="email" class="form-control" id="companyEmail" [(ngModel)]="formData.email" name="email" required>
-  </div>
-  <div class="form-group">
-    <label for="company">Password</label>
-    <input type="password" class="form-control" id="companyPassword" [(ngModel)]="formData.password" name="password" required>
-  </div>
-  <button [routerLink]="['/coordinatorsdashboard']" class="btn btn-primary">Login</button>
-</form>
 
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" class="form-control" [(ngModel)]="formData.password" required>
+  </div>
 
+  <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Login</button>
+</form>

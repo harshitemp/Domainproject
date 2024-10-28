@@ -3,10 +3,8 @@
 <br>
 <br>
 <br>
-<!-- src/app/schedule-meeting/schedule-meeting.component.html -->
 <div class="meeting-section">
     <h3>Schedule Meeting</h3>
-    <input type="date" [(ngModel)]="meetingDate" />
+    <input type="date" [(ngModel)]="meetingDate" required /> <!-- Added required attribute -->
     <button (click)="scheduleMeeting()">Schedule Meeting</button>
-  </div>
-  
+</div>

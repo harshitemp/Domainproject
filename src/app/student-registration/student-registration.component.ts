@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http'; // Import HttpClient for making HTTP requests
+import { HttpClient, HttpClientModule } from '@angular/common/http'; // Import HttpClient for making HTTP requests
 import { TopnavComponent } from '../topnav/topnav.component';
 import { FeedbackComponent } from "../feedback/feedback.component";
 import { Footer1Component } from "../footer1/footer1.component";
@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-student-registration',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, TopnavComponent, FeedbackComponent, Footer1Component,CommonModule],
+  imports: [FormsModule, ReactiveFormsModule, TopnavComponent, HttpClientModule,FeedbackComponent, Footer1Component,CommonModule],
   templateUrl: './student-registration.component.html',
   styleUrls: ['./student-registration.component.css']
 })

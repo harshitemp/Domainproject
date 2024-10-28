@@ -1,7 +1,7 @@
 // view-placement.component.ts
 import { Component } from '@angular/core';
 import * as XLSX from 'xlsx';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { TopnavallComponent } from '../topnavall/topnavall.component';
 import { CommonModule } from '@angular/common'; // Import CommonModule
@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common'; // Import CommonModule
 @Component({
   selector: 'app-view-placement',
   standalone: true,
-  imports: [CommonModule, SidebarComponent, TopnavallComponent],
+  imports: [CommonModule, SidebarComponent, HttpClientModule,TopnavallComponent],
   templateUrl: './view-placement.component.html',
   styleUrls: ['./view-placement.component.css']
 })
