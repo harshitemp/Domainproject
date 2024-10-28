@@ -1,4 +1,5 @@
 import { Component, AfterViewInit, ElementRef, Renderer2 } from '@angular/core';
+import { HttpClient } from '@angular/common/http'; // Import HttpClient
 import { NavbarComponent } from "../navbar/navbar.component";
 import { FooterComponent } from "../footer/footer.component";
 import { LogoGridComponent } from "../logo-grid/logo-grid.component";
@@ -21,19 +22,31 @@ export class HomeComponent implements AfterViewInit {
   private target: { x: number; y: number };
   private animateHeader = true;
 
-  constructor(private elRef: ElementRef, private renderer: Renderer2) {
+  constructor(private elRef: ElementRef, private renderer: Renderer2, private http: HttpClient) { // Inject HttpClient
     this.width = window.innerWidth;
     this.height = window.innerHeight;
     this.target = { x: this.width / 2, y: this.height / 2 };
   }
 
-  // Method to handle contact us button click
- 
-
   ngAfterViewInit(): void {
     this.initHeader();
     this.initAnimation();
     this.addListeners();
+    this.fetchData(); // Call the fetchData method
+  }
+
+  private fetchData(): void {
+    const apiUrl = 'https://localhost:5000/api/statistics'; // Replace with your actual API URL
+
+    this.http.get(apiUrl).subscribe(
+      (data: any) => {
+        console.log('Data fetched from API:', data);
+        // Handle the fetched data here
+      },
+      error => {
+        console.error('Error fetching data:', error);
+      }
+    );
   }
 
   private initHeader(): void {

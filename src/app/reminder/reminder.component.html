@@ -1,17 +1,18 @@
 <!-- src/app/reminder/reminder.component.html -->
- <app-sidebar></app-sidebar>
- <app-topnavall></app-topnavall>
- <br>
- <br>
- <br>
+<app-sidebar></app-sidebar>
+<app-topnavall></app-topnavall>
+<br>
+<br>
+<br>
 <div class="reminder-section">
-    <h3>Send Reminder</h3>
-    <input type="number" placeholder="Student ID" [(ngModel)]="studentId" />
-    <input type="text" placeholder="Reminder Message" [(ngModel)]="reminderMessage" />
-    <select [(ngModel)]="reminderType">
+  <h3>Send Reminder</h3>
+  <form (ngSubmit)="sendReminder()">
+    <input type="number" placeholder="Student ID" [(ngModel)]="studentId" name="studentId" required />
+    <input type="text" placeholder="Reminder Message" [(ngModel)]="reminderMessage" name="reminderMessage" required />
+    <select [(ngModel)]="reminderType" name="reminderType" required>
       <option value="registration">Registration</option>
       <option value="training">Training</option>
     </select>
-    <button (click)="sendReminder()">Send Reminder</button>
-  </div>
-  
+    <button type="submit">Send Reminder</button>
+  </form>
+</div>

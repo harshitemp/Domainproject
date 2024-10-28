@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-feedback',
   standalone:true,
-  imports:[FormsModule,ReactiveFormsModule,CommonModule],
+  imports:[FormsModule,ReactiveFormsModule,CommonModule,HttpClientModule],
   templateUrl: './feedback.component.html',
   styleUrls: ['./feedback.component.css']
 })

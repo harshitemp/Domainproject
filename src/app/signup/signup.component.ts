@@ -3,50 +3,63 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common'; // Import CommonModule
 import { NavbarComponent } from '../navbar/navbar.component';
 import { Router, RouterLink } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [FormsModule, CommonModule, NavbarComponent,RouterLink], // Add CommonModule here
+  imports: [FormsModule, CommonModule, NavbarComponent, RouterLink, HttpClientModule], // Add CommonModule here
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent {
 
-  selectedForm: string | null = null;
+  selectedForm: string | null = null; // Track selected form type
   formData = {
     email: '',
     password: ''
   };
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) { }
 
+  // Method to show the correct form based on user selection
   showForm(formType: string) {
     this.selectedForm = formType;
   }
 
+  // Method to handle form submission
   onSubmit() {
     if (this.selectedForm) {
-      const userType = this.selectedForm;
+      const userType = this.selectedForm; // Capture the selected form type (user type)
       const data = {
         email: this.formData.email,
         password: this.formData.password,
         userType: userType
       };
 
+      // HTTP POST request to submit registration data
       this.http.post('http://localhost:5000/api/register', data)
         .subscribe(
           (response: any) => {
             console.log('User registered successfully', response);
-            this.router.navigate([`/${userType}`]);
+
+            // Navigate to the respective route based on user type
+            if (userType === 'student') {
+              this.router.navigate(['/student-registration']);
+            } else if (userType === 'university') {
+              this.router.navigate(['/pursuitmanager']);
+            } else if (userType === 'company') {
+              this.router.navigate(['/training']);
+            } else if (userType === 'coordinators') {
+              this.router.navigate(['/coordinatorsdashboard']);
+            }
           },
           (error) => {
             console.error('Error registering user', error);
           }
         );
 
+      // Reset the form data after submission
       this.formData = { email: '', password: '' };
     }
   }

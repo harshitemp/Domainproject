@@ -1,92 +1,93 @@
 <app-topnavall></app-topnavall>
-  <br>
-  <br>
-  <br>
-  <div class="content">
-    <h2>Add Recruitment Details</h2>
-    <form class="recruitment-form">
-      <div class="form-group">
-        <label for="recruiterName">Name of the Recruiter</label>
-        <input type="text" id="recruiterName" name="recruiterName" required>
-      </div>
-  
-      <div class="form-group">
-        <label for="companyProfile">Brief Profile of Company with Website</label>
-        <textarea id="companyProfile" name="companyProfile" rows="3" required></textarea>
-      </div>
-  
-      <div class="form-group">
-        <label for="jobTitle">Job Title</label>
-        <input type="text" id="jobTitle" name="jobTitle" required>
-      </div>
-  
-      <div class="form-group">
-        <label for="ctc">CTC</label>
-        <input type="text" id="ctc" name="ctc" required>
-      </div>
-  
-      <div class="form-group">
-        <label for="eligibility">Eligibility</label>
-        <input type="text" id="eligibility" name="eligibility" required>
-      </div>
-  
-      <div class="form-group">
-        <label for="skillSet">Skill Set Required</label>
-        <input type="text" id="skillSet" name="skillSet" required>
-      </div>
-  
-      <div class="form-group">
-        <label for="selectionProcess">Selection Process</label>
-        <textarea id="selectionProcess" name="selectionProcess" rows="3" required></textarea>
-      </div>
-  
-      <div class="form-group">
-        <label for="location">Location of Posting</label>
-        <input type="text" id="location" name="location" required>
-      </div>
-  
-      <div class="form-group">
-        <label for="trainingNeed">Training Need</label>
-        <input type="text" id="trainingNeed" name="trainingNeed" required>
-      </div>
-  
-      <div class="form-group">
-        <label for="recruiterStatus">Existing/New Recruiter</label>
-        <select id="recruiterStatus" name="recruiterStatus" required>
-          <option value="existing">Existing</option>
-          <option value="new">New</option>
-        </select>
-      </div>
-  
-      <div class="form-group">
-        <label for="registrationDeadline">Last Date for Registration</label>
-        <input type="date" id="registrationDeadline" name="registrationDeadline" required>
-      </div>
-  
-      <div class="form-group">
-        <label for="recruitmentDates">Tentative Dates for Recruitment</label>
-        <input type="week" id="recruitmentDates" name="recruitmentDates" required>
-      </div>
-  
-      <div class="form-group">
-        <label for="driveMode">Mode of Campus Drive</label>
-        <select id="driveMode" name="driveMode" required>
-          <option value="onCampus">On Campus</option>
-          <option value="offCampus">Off Campus</option>
-          <option value="virtual">Virtual</option>
-        </select>
-      </div>
-  
-      <div class="form-group">
-        <label for="additionalInfo">Any Other Information</label>
-        <textarea id="additionalInfo" name="additionalInfo" rows="3"></textarea>
-      </div>
-  
-      <div class="form-group">
-        <button type="submit" class="submit-button">Submit</button>
-      </div>
-    </form>
-  </div>
-  <app-footer1></app-footer1>
+<br>
+<br>
+<br>
 
-  <app-feedback></app-feedback>
+<div class="content">
+  <h2>Add Recruitment Details</h2>
+  <form [formGroup]="recruitmentForm" (ngSubmit)="onSubmit()" class="recruitment-form">
+    <div class="form-group">
+      <label for="recruiterName">Name of the Recruiter</label>
+      <input formControlName="recruiterName" type="text" id="recruiterName" required writingsuggestions="true">
+    </div>
+
+    <div class="form-group">
+      <label for="companyProfile">Brief Profile of Company with Website</label>
+      <textarea formControlName="companyProfile" id="companyProfile" rows="3" required></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="jobTitle">Job Title</label>
+      <input formControlName="jobTitle" type="text" id="jobTitle" required>
+    </div>
+
+    <div class="form-group">
+      <label for="ctc">CTC</label>
+      <input formControlName="ctc" type="text" id="ctc" required>
+    </div>
+
+    <div class="form-group">
+      <label for="eligibility">Eligibility</label>
+      <input formControlName="eligibility" type="text" id="eligibility" required>
+    </div>
+
+    <div class="form-group">
+      <label for="skillSet">Skill Set Required</label>
+      <input formControlName="skillSet" type="text" id="skillSet" required>
+    </div>
+
+    <div class="form-group">
+      <label for="selectionProcess">Selection Process</label>
+      <textarea formControlName="selectionProcess" id="selectionProcess" rows="3" required></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="location">Location of Posting</label>
+      <input formControlName="location" type="text" id="location" required>
+    </div>
+
+    <div class="form-group">
+      <label for="trainingNeed">Training Need</label>
+      <input formControlName="trainingNeed" type="text" id="trainingNeed" required>
+    </div>
+
+    <div class="form-group">
+      <label for="recruiterStatus">Existing/New Recruiter</label>
+      <select formControlName="recruiterStatus" id="recruiterStatus" required>
+        <option value="existing">Existing</option>
+        <option value="new">New</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="registrationDeadline">Last Date for Registration</label>
+      <input formControlName="registrationDeadline" type="date" id="registrationDeadline" required>
+    </div>
+
+    <div class="form-group">
+      <label for="recruitmentDates">Tentative Dates for Recruitment</label>
+      <input formControlName="recruitmentDates" type="week" id="recruitmentDates" required>
+    </div>
+
+    <div class="form-group">
+      <label for="driveMode">Mode of Campus Drive</label>
+      <select formControlName="driveMode" id="driveMode" required>
+        <option value="onCampus">On Campus</option>
+        <option value="offCampus">Off Campus</option>
+        <option value="virtual">Virtual</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="additionalInfo">Any Other Information</label>
+      <textarea formControlName="additionalInfo" id="additionalInfo" rows="3"></textarea>
+    </div>
+
+    <div class="form-group">
+      <button type="submit" class="submit-button">Submit</button>
+    </div>
+  </form>
+</div>
+
+<app-footer1></app-footer1>
+<app-feedback></app-feedback>

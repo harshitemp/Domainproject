@@ -1,22 +1,31 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { FormsModule } from '@angular/forms';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-contact',
-  standalone:true,
-  imports:[NavbarComponent,FormsModule],
+  standalone: true,
+  imports: [NavbarComponent, FormsModule, HttpClientModule],
   templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.css']
+  styleUrls: ['./contact.component.css'],
+  animations: [
+    trigger('fadeIn', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('500ms ease-in', style({ opacity: 1 }))
+      ])
+    ])
+  ]
 })
 export class ContactComponent {
-contactForm: any;
+  // Form model
+  contactForm: any;
+
   constructor(private http: HttpClient) {}
 
-  
-
-  //Chatbot functionality (unchanged)
+  // Chatbot responses
   responses: { [key: string]: string } = {
     "hi": "Hello! How can I help you?",
     "how are you": "I'm just a chatbot, but thank you for asking!",
@@ -24,6 +33,7 @@ contactForm: any;
     "bye": "Goodbye! Have a great day!",
   };
 
+  // Send message function for chatbot
   sendMessage() {
     const userInput = (document.getElementById("user-input") as HTMLInputElement).value;
     const chatBox = document.getElementById("chat-box") as HTMLDivElement;
@@ -31,7 +41,7 @@ contactForm: any;
     // Display user message
     chatBox.innerHTML += `<div class="message user-message">You: ${userInput}</div>`;
 
-    // Get response from chatbot
+    // Get chatbot response
     const response = this.responses[userInput.toLowerCase()] || "I'm sorry, I didn't understand that.";
 
     // Display chatbot response
@@ -44,22 +54,30 @@ contactForm: any;
     chatBox.scrollTop = chatBox.scrollHeight;
   }
 
+  // Toggle the chat widget visibility
   toggleChatWidget() {
     const chatWidget = document.getElementById("chat-widget") as HTMLDivElement;
     chatWidget.style.display = chatWidget.style.display === "none" || chatWidget.style.display === "" ? "block" : "none";
   }
 
+  // Handle form submission
+  onSubmit(contactForm: any) {
+    if (contactForm.valid) {
+      const formData = contactForm.value;
 
-
-onSubmit(contactForm: any) {
-  const formData = contactForm.value;
-
-apise
-//  this.http.post(, formData)
-//     .subscribe(response => {
-//       alert('Message sent successfully!');
-//     }, error => {
-//       alert('Failed to send message.');
-//     });
-}
+      // Make HTTP POST request to server
+      this.http.post('http://localhost:5000/api/contact', formData)
+        .subscribe(
+          response => {
+            alert('Message sent successfully!');
+            contactForm.reset(); // Reset the form after success
+          },
+          error => {
+            alert('Failed to send message.');
+          }
+        );
+    } else {
+      alert('Please fill out all required fields correctly.');
+    }
+  }
 }

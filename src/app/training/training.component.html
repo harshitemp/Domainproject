@@ -1,16 +1,15 @@
 <app-sidenav></app-sidenav>
 
-
-
 <div class="content">
-    <form formGroup="trainingForm" (ngSubmit)="submitTraining()" class="training-form">
-        <!-- Campus Dropdown -->
-         <br>
-         <br>
+    <form [formGroup]="trainingForm" (ngSubmit)="submitTraining()" class="training-form">
+        <br><br>
         <h2>Training Session Details</h2>
+
+        <!-- Campus Dropdown -->
         <div class="form-group">
             <label for="campus">Select Campus</label>
             <select id="campus" formControlName="campus" required>
+                <option value="">Select Campus</option> <!-- Default option -->
                 <option value="vizianagaram">Vizianagaram</option>
                 <option value="bhubaneswar">Bhubaneswar</option>
                 <option value="parlakhemundi">Parlakhemundi</option>
@@ -23,6 +22,7 @@
         <div class="form-group">
             <label for="stream">Select Stream</label>
             <select id="stream" formControlName="stream" required>
+                <option value="">Select Stream</option> <!-- Default option -->
                 <option value="btech">B.Tech</option>
                 <option value="mech">Mech</option>
                 <option value="bba">BBA</option>
@@ -55,8 +55,9 @@
             <input type="time" id="time" formControlName="time" required>
         </div>
 
-            <button type="submit"  class="submit-button">Submit</button>
-        </form>
-    </div>
-    <app-footer1></app-footer1>
-    <app-feedback></app-feedback>
+        <button type="submit" class="submit-button">Submit</button>
+    </form>
+</div>
+
+<app-footer1></app-footer1>
+<app-feedback></app-feedback>
