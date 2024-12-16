@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule, HttpErrorResponse } from '@angular/common/http';
-import { SidenavComponent } from "../sidenav/sidenav.component";
-import { TopnavComponent } from "../topnav/topnav.component";
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SidenavComponent } from '../sidenav/sidenav.component';
+import { TopnavComponent } from '../topnav/topnav.component';
 
 @Component({
   selector: 'app-upcoming',
-  standalone: true,
+  standalone:true,
   imports: [SidenavComponent, TopnavComponent, HttpClientModule, FormsModule, ReactiveFormsModule, CommonModule],
   templateUrl: './upcoming.component.html',
   styleUrls: ['./upcoming.component.css']
@@ -22,6 +22,7 @@ export class UpcomingComponent {
   registration = {
     name: '',
     regNumber: '',
+    email: '',
     stream: 'CSE',
     mobile: '',
     campuses: {
@@ -31,6 +32,7 @@ export class UpcomingComponent {
   };
 
   additionalCompanies: string[] = [];
+  registrations: any[] = []; // Fetched data
 
   constructor(private http: HttpClient) {}
 
@@ -47,41 +49,20 @@ export class UpcomingComponent {
     }
   }
 
-  submitTraining() {
+  submitTraining(): void {
     const payload = { campusDrives: this.campusDrives };
-
-    // Use HTTP instead of HTTPS
     this.http.post('http://localhost:5000/api/registercampus', payload)
       .subscribe(
         (response) => console.log('Training session submitted:', response),
-        (error: HttpErrorResponse) => {
-          console.error('Error submitting training session:', error);
-          if (error.status === 0) {
-            alert('Network error: Please check your connection.');
-          } else {
-            alert(`Error ${error.status}: Unable to submit the training session. Please try again.`);
-          }
-        }
+        (error: HttpErrorResponse) => console.error('Error submitting:', error)
       );
   }
 
-  register() {
-    // Use HTTP instead of HTTPS
+  register(): void {
     this.http.post('http://localhost:5000/api/registercampus', this.registration)
       .subscribe(
         (response) => console.log('Registration successful:', response),
-        (error: HttpErrorResponse) => {
-          console.error('Error registering:', error);
-          if (error.status === 0) {
-            alert('Network error: Please check your connection.');
-          } else {
-            alert(`Error ${error.status}: Registration failed. Please try again.`);
-          }
-        }
+        (error: HttpErrorResponse) => console.error('Error registering:', error)
       );
-  }
-
-  logout() {
-    // Logout logic here
   }
 }

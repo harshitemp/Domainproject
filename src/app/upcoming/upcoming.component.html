@@ -1,7 +1,7 @@
 <app-topnav></app-topnav>
 <div class="container">
-  <br>
-  <br>
+  <h1>Campus Drive Management</h1>
+
   <h2>Training Session Details</h2>
   <form (ngSubmit)="submitTraining()">
     <label>
@@ -29,6 +29,9 @@
     
     <label>Registration Number:</label>
     <input type="text" [(ngModel)]="registration.regNumber" name="regNumber" required><br>
+    
+    <label>Email:</label>
+    <input type="email" [(ngModel)]="registration.email" name="email" required><br>
     
     <label>Select Stream:</label>
     <select [(ngModel)]="registration.stream" name="stream" required>

@@ -42,8 +42,8 @@ export class PursuitmanagerComponent implements OnInit {
   onSubmit(): void {
     if (this.recruitmentForm.valid) {
       // Make the POST request to your API with the form data
-      this.http.post('http://localhost:5000/api/recruitment', this.recruitmentForm.value)
-        .subscribe(
+      this.http.post('http://localhost:5000/api/create-recruitment', this.recruitmentForm.value)
+      .subscribe(
           response => {
             console.log('Form Submitted', response);
             alert('Form submitted successfully!'); // Show success message

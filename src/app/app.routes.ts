@@ -22,9 +22,12 @@ import { ScheduleMeetingComponent } from './schedule-meeting/schedule-meeting.co
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { ViewPlacementComponent } from './view-placement/view-placement.component';
-import { CoordinatorsdashboardComponent } from './coordinatorsdashboard/coordinatorsdashboard.component';
 import { ButtonComponent } from './button/button.component';
 import { ApiService } from './api.service';
+import { DataupcomingComponent } from './dataupcoming/dataupcoming.component';
+import { TopnavforallComponent } from './topnavforall/topnavforall.component';
+import { GoogleFormResponsesComponent } from './google-form-responses/google-form-responses.component';
+import { DisplayResponsesComponent } from './display-responses/display-responses.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -50,10 +53,13 @@ export const routes: Routes = [
     {path:'sidebar',component:SidebarComponent},
     {path:'feedback',component:FeedbackComponent},
     {path:'view-placement',component:ViewPlacementComponent},
-    {path:'coordinatorsdashboard',component:CoordinatorsdashboardComponent},
     {path:'button',component:ButtonComponent},
-    {path:'api',component:ApiService}
-];
+    {path:'api',component:ApiService},
+    {path:'dataupcoming',component:DataupcomingComponent},
+    {path:'Topnavforall',component:TopnavforallComponent},
+    { path: 'google-form-responses', component: GoogleFormResponsesComponent },
+{path:'display-responses',component:DisplayResponsesComponent},
+    ];
 
 @NgModule({
     imports: [RouterModule.forRoot(routes)],

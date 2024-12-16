@@ -1,0 +1,31 @@
+<app-topnavall></app-topnavall>
+<br />
+<br />
+<br />
+<br />
+<h2>Submitted Google Form Responses</h2>
+
+<div *ngIf="responses.length > 0">
+  <form (ngSubmit)="submitSelection()">
+    <ul>
+      <li *ngFor="let response of responses">
+        <input 
+          type="checkbox" 
+          [(ngModel)]="response.selected" 
+          [name]="'selected_' + response.email" 
+        />
+        <strong>Name:</strong> {{ response.fullName }}<br />
+        <strong>Email:</strong> {{ response.email }}<br />
+        <strong>Skills:</strong> {{ response.skills }}<br />
+        <strong>CGPA:</strong> {{ response.cgpa }}<br />
+        <strong>Stream:</strong> {{ response.stream }}<br />
+        <strong>Sub Stream:</strong> {{ response.subStream }}
+        <hr />
+      </li>
+    </ul>
+    <button type="submit">Submit</button>
+  </form>
+</div>
+
+<div *ngIf="responses.length === 0 && !errorMessage">No responses available.</div>
+<div *ngIf="errorMessage">{{ errorMessage }}</div>

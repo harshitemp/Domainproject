@@ -3,11 +3,12 @@ import { FormsModule,  } from '@angular/forms';
 import { SidebarComponent } from "../sidebar/sidebar.component";
 import { TopnavallComponent } from "../topnavall/topnavall.component";
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { TopnavforallComponent } from "../topnavforall/topnavforall.component";
 
 @Component({
   selector: 'app-schedule-meeting',
   standalone: true,
-  imports: [FormsModule, SidebarComponent, TopnavallComponent,HttpClientModule],
+  imports: [FormsModule, SidebarComponent, TopnavallComponent, HttpClientModule, TopnavforallComponent],
   templateUrl: './schedule-meeting.component.html',
   styleUrl: './schedule-meeting.component.css'
 })

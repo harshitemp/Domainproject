@@ -1,0 +1,31 @@
+<app-topnavall></app-topnavall>
+<br>
+<br>
+<div class="container">
+  <h1>Campus Drive Registrations</h1>
+  <button (click)="downloadExcel()" class="btn btn-primary">Download Excel</button>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Reg. Number</th>
+        <th>Email</th>
+        <th>Stream</th>
+        <th>Mobile</th>
+        <th>Vizianagaram</th>
+        <th>Bhubaneswar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let reg of registrations">
+        <td>{{ reg.name }}</td>
+        <td>{{ reg.regNumber }}</td>
+        <td>{{ reg.email }}</td>
+        <td>{{ reg.stream }}</td>
+        <td>{{ reg.mobile }}</td>
+        <td>{{ reg.campuses?.vizianagaram ? 'Yes' : 'No' }}</td>
+        <td>{{ reg.campuses?.bhubaneswar ? 'Yes' : 'No' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

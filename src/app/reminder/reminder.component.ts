@@ -3,11 +3,12 @@ import { FormsModule } from '@angular/forms';
 import { SidebarComponent } from "../sidebar/sidebar.component";
 import { TopnavallComponent } from "../topnavall/topnavall.component";
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { TopnavforallComponent } from "../topnavforall/topnavforall.component";
 
 @Component({
   selector: 'app-reminder',
   standalone: true,
-  imports: [FormsModule, SidebarComponent, TopnavallComponent, HttpClientModule],
+  imports: [FormsModule, SidebarComponent, TopnavallComponent, HttpClientModule, TopnavforallComponent],
   templateUrl: './reminder.component.html',
   styleUrls: ['./reminder.component.css'] // Fixed typo from styleUrl to styleUrls
 })

@@ -8,72 +8,78 @@ export interface Question {
   question: string;
 }
 
+type QuestionCategory = 'general' | 'technical' | 'personalTechnical'; // Define valid categories
+
 @Component({
   selector: 'app-footer1',
   standalone: true,
   imports: [FormsModule, CommonModule, HttpClientModule],
   templateUrl: './footer1.component.html',
-  styleUrls: ['./footer1.component.css']
+  styleUrls: ['./footer1.component.css'],
 })
 export class Footer1Component implements OnInit {
   generalQuestions: Question[] = [];
   technicalQuestions: Question[] = [];
   personalTechnicalQuestions: Question[] = [];
 
-  showAddQuestion = {
+  showAddQuestion: { [key in QuestionCategory]: boolean } = {
     general: false,
     technical: false,
-    personalTechnical: false
+    personalTechnical: false,
   };
 
-  newQuestion = {
+  newQuestion: { [key in QuestionCategory]: string } = {
     general: '',
     technical: '',
-    personalTechnical: ''
+    personalTechnical: '',
   };
-
-  private apiUrl = 'http://localhost:5000/api/footerq';
 
   constructor(private http: HttpClient) {}
 
-  ngOnInit(): void {
-    this.loadQuestions();
+  ngOnInit() {
+    this.getQuestions();
   }
 
-  loadQuestions(): void {
-    this.http.get<Question[]>(this.apiUrl).subscribe({
-      next: (questions) => {
-        this.generalQuestions = questions.filter(q => q.category === 'general');
-        this.technicalQuestions = questions.filter(q => q.category === 'technical');
-        this.personalTechnicalQuestions = questions.filter(q => q.category === 'personalTechnical');
+  getQuestions() {
+    this.http.get<Question[]>('http://localhost:5000/api/questions').subscribe(
+      (data) => {
+        this.generalQuestions = data.filter((q) => q.category === 'general');
+        this.technicalQuestions = data.filter((q) => q.category === 'technical');
+        this.personalTechnicalQuestions = data.filter(
+          (q) => q.category === 'personalTechnical'
+        );
       },
-      error: (error) => console.error('Error loading questions:', error)
-    });
+      (error) => {
+        console.error('Error fetching questions:', error);
+      }
+    );
   }
 
-  toggleAddQuestion(category: 'general' | 'technical' | 'personalTechnical'): void {
+  toggleAddQuestion(category: QuestionCategory) {
     this.showAddQuestion[category] = !this.showAddQuestion[category];
   }
 
-  addQuestion(category: 'general' | 'technical' | 'personalTechnical'): void {
-    const questionToAdd = this.newQuestion[category].trim();
-    if (questionToAdd) {
-      const newQuestion: Question = { category, question: questionToAdd };
+  addQuestion(category: QuestionCategory) {
+    const questionText = this.newQuestion[category];
+    if (!questionText) return;
 
-      this.http.post<Question>(this.apiUrl, newQuestion).subscribe({
-        next: (addedQuestion) => {
-          if (category === 'general') {
-            this.generalQuestions.push(addedQuestion);
-          } else if (category === 'technical') {
-            this.technicalQuestions.push(addedQuestion);
-          } else if (category === 'personalTechnical') {
-            this.personalTechnicalQuestions.push(addedQuestion);
-          }
-          this.newQuestion[category] = '';
-          this.showAddQuestion[category] = false;
-        },
-        error: (error) => console.error('Error saving question:', error)
-      });
-    }
+    const question: Question = { category, question: questionText };
+    this.http.post<Question>('http://localhost:5000/api/questions', question).subscribe(
+      (data) => {
+        // Add the new question to the appropriate list
+        if (category === 'general') {
+          this.generalQuestions.push(data);
+        } else if (category === 'technical') {
+          this.technicalQuestions.push(data);
+        } else if (category === 'personalTechnical') {
+          this.personalTechnicalQuestions.push(data);
+        }
+        this.newQuestion[category] = ''; // Reset input field
+        this.showAddQuestion[category] = false; // Close the input field
+      },
+      (error) => {
+        console.error('Error adding question:', error);
+      }
+    );
   }
 }
