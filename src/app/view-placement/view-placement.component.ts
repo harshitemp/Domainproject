@@ -4,12 +4,13 @@ import * as XLSX from 'xlsx';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { TopnavallComponent } from '../topnavall/topnavall.component';
-import { CommonModule } from '@angular/common'; // Import CommonModule
+import { CommonModule } from '@angular/common';
+import { TopnavforallComponent } from "../topnavforall/topnavforall.component"; // Import CommonModule
 
 @Component({
   selector: 'app-view-placement',
   standalone: true,
-  imports: [CommonModule, SidebarComponent, HttpClientModule,TopnavallComponent],
+  imports: [CommonModule, SidebarComponent, HttpClientModule, TopnavallComponent, TopnavforallComponent],
   templateUrl: './view-placement.component.html',
   styleUrls: ['./view-placement.component.css']
 })

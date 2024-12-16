@@ -55,7 +55,7 @@ export class LoginComponent {
                   this.router.navigate(['/training']);
                   break;
                 case 'coordinators':
-                  this.router.navigate(['/coordinatorsdashboard']);
+                  this.router.navigate(['/view-placement']);
                   break;
                 default:
                   console.warn('Unknown user type:', this.selectedForm);

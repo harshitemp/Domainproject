@@ -1,0 +1,38 @@
+<app-topnav></app-topnav>
+<br>
+<div class="form-container">
+  <h2>Submit Google Form</h2>
+  <form (ngSubmit)="submitForm()">
+    <label>Name:</label>
+    <input type="text" [(ngModel)]="formData.fullName" name="fullName" required />
+
+    <label>Email:</label>
+    <input type="email" [(ngModel)]="formData.email" name="email" required />
+
+    <label>Skills:</label>
+    <input type="text" [(ngModel)]="formData.skills" name="skills" required />
+
+    <label>CGPA:</label>
+    <input type="number" [(ngModel)]="formData.cgpa" name="cgpa" required />
+
+    <label>Stream:</label>
+    <select [(ngModel)]="formData.stream" name="stream" required>
+      <option value="B.Tech">B.Tech</option>
+      <option value="BBA">BBA</option>
+    </select>
+
+    <label>Sub Stream:</label>
+    <select [(ngModel)]="formData.subStream" name="subStream" >
+      <option value="Mech">Mech</option>
+      <option value="CSE">CSE</option>
+      <option value="CSW">CSW</option>
+      <option value="ECE">ECE</option>
+      <option value="DS">DS</option>
+      <option value="Digital marketing">Digital marketing</option>
+      <option value="Hr department">Hr department</option>
+
+    </select>
+
+    <button type="submit">Submit</button>
+  </form>
+</div>

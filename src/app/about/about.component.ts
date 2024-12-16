@@ -29,21 +29,13 @@ import { CommonModule } from '@angular/common';
   ],
 })
 export class AboutComponent implements OnInit {
-  aboutData: any = {};
-
-  constructor(private http: HttpClient, private router: Router) {}
-
-  ngOnInit() {
-    // Fetch data from the backend
-    this.http.get('/api/about').subscribe(
-      (data: any) => {
-        this.aboutData = data;
-      },
-      (error) => {
-        console.error('Error fetching about data:', error);
-      }
-    );
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
   }
+  aboutData: any = {};
+  router: any;
+
+  
 
   signup() {
     this.router.navigate(['/signup']); // Navigate to the signup page

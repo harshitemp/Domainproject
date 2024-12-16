@@ -1,0 +1,117 @@
+/* Style for the top navigation component */
+app-topnavall {
+    display: block;
+    background-color: #2a3f54;
+    padding: 10px;
+  }
+  
+  /* General page styling */
+  body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    color: #333;
+  }
+  
+  /* Header styling */
+  h2 {
+    text-align: center;
+    color: #444;
+    margin-top: 20px;
+  }
+  
+  /* Form container */
+  form {
+    margin: 20px auto;
+    max-width: 800px;
+    padding: 20px;
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* List styling */
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  li {
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #fafafa;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  li:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Input checkbox styling */
+  input[type='checkbox'] {
+    margin-right: 10px;
+    transform: scale(1.2);
+    cursor: pointer;
+  }
+  
+  /* Label styling */
+  strong {
+    font-weight: bold;
+    color: #555;
+  }
+  
+  /* Divider line */
+  hr {
+    margin-top: 10px;
+    border: 0;
+    border-top: 1px solid #ddd;
+  }
+  
+  /* Button styling */
+  button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
+  
+  /* Error message styling */
+  div[ngIf='errorMessage'] {
+    text-align: center;
+    color: #ff0000;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+  
+  /* Empty state message */
+  div[ngIf='responses.length === 0'] {
+    text-align: center;
+    color: #777;
+    font-size: 18px;
+    margin-top: 20px;
+  }
+  

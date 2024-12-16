@@ -1,0 +1,38 @@
+/* Light Theme */
+.light-theme {
+    --background-color: #ffffff;
+    --text-color: #000000;
+  }
+  
+  /* Dark Theme */
+  .dark-theme {
+    --background-color: #121212;
+    --text-color: #ffffff;
+  }
+  
+  /* Apply theme variables */
+  body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    font-family: Arial, sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  /* Button styles */
+  .theme-toggle-btn {
+    padding: 10px 20px;
+    margin: 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    background-color: var(--text-color);
+    color: var(--background-color);
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .theme-toggle-btn:hover {
+    opacity: 0.8;
+  }
+  

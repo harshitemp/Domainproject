@@ -1,90 +1,69 @@
 .cv-container {
+  display: flex;
+  flex-direction: column;
   width: 800px;
   margin: 0 auto;
-  border: 1px solid #ddd;
-  padding: 20px;
-  font-family: Arial, sans-serif;
-  color: #333;
-  display: flex;
-  flex-direction: row;
 }
 
-.cv-header {
-  background-color: #f4f4f4;
-  padding: 10px;
+.header {
   text-align: center;
 }
 
-.cv-header h1 {
-  background-color: #f2cc70;
-  padding: 10px;
-  margin-bottom: 20px;
-  font-size: 24px;
-}
-
-.cv-content {
+.main-content {
   display: flex;
-  justify-content: space-between;
+  margin-top: 20px;
+}
+.highlighted-name {
+  background-color: yellow;  /* Highlight color */
+  display: inline-block;      /* To ensure padding/margin works as expected */
+  padding: 5px;              /* Padding for better visibility */
+  font-size: 24px;           /* Font size to make it prominent */
+  text-align: center;        /* Center the text */
 }
 
-.cv-left {
-  flex: 1;
-  padding-right: 10px;
+.left-column, .right-column {
+  width: 50%;
+  padding: 0 10px;
 }
 
-.cv-right {
-  flex: 1;
-  padding-left: 10px;
-  border-left: 1px solid #ddd;
-}
-
-.cv-section {
+.section {
   margin-bottom: 20px;
 }
 
-.cv-section h2 {
-  color: #d1ad45;
-  font-size: 18px;
-  border-bottom: 2px solid #d1ad45;
-  padding-bottom: 5px;
+.section h3 {
+  font-size: 1.2em;
+  margin-bottom: 8px;
 }
 
+textarea, input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+textarea {
+  resize: none;
+  height: 60px;
+}
 .cv-photo {
+  border: 1px dashed #D1AD45; /* Placeholder for image border */
   text-align: center;
-  border: 1px dashed #aaa;
-  padding: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  padding: 10px;
 }
-
-.cv-photo p {
-  font-size: 14px;
-  color: #999;
-}
-
-.cv-contact p {
-  font-size: 14px;
-  margin: 5px 0;
-}
-
-.cv-actions {
+.action-buttons {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin-top: 30px;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
 }
 
-.cv-actions button {
-  background-color: #d1ad45;
-  color: #fff;
-  padding: 10px 15px;
-  border: none;
+button {
+  padding: 8px 16px;
+  font-size: 16px;
   cursor: pointer;
-  margin-right: 10px;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.cv-actions button:hover {
-  background-color: #b7950b;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
 }
