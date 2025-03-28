@@ -1,51 +1,63 @@
 /* Global Styles */
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #f1f1f1;
+  font-family: 'Roboto', Arial, sans-serif;
+  background: linear-gradient(135deg, #e3f2fd, #ffffff);
   display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  min-height: 100vh; /* Ensure body takes the full viewport height */
-  overflow: hidden; /* Prevents scrollbars from appearing */
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+  color: #333;
 }
 
 /* Form Container */
 form {
-  max-width: 800px;
+  max-width: 750px;
   width: 100%;
-  background-color: #ffffff;
-  padding: 20px;
-  margin: 20px; /* Adds space around the form */
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, #ffffff, #f9f9f9);
+  padding: 40px;
+  margin: 20px;
+  border-radius: 15px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  overflow-y: auto; /* Allows scrolling within the form if the content overflows */
+  gap: 25px;
+  overflow-y: auto;
+  border: 1px solid #e0e0e0;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+}
+
+form:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(135deg, #ffffff, #f4f4f4);
 }
 
 /* Section Headers */
 h3 {
-  font-size: 20px;
-  color: #333;
-  border-bottom: 2px solid #0b032d;
-  padding-bottom: 5px;
-  margin-bottom: 10px;
+  font-size: 26px;
+  color: #232147;
+  border-bottom: 3px solid #4e54c8;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
 
 /* Form Groups */
 div {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 15px;
 }
 
 /* Label Styling */
 label {
-  font-size: 14px;
+  font-size: 16px;
   color: #555;
   font-weight: bold;
+  letter-spacing: 0.6px;
 }
 
 /* Input Fields Styling */
@@ -55,13 +67,15 @@ input[type="email"],
 input[type="file"],
 select,
 textarea {
-  padding: 10px;
-  font-size: 14px;
+  padding: 15px 18px;
+  font-size: 16px;
   border: 1px solid #ddd;
-  border-radius: 5px;
+  border-radius: 10px;
+  background: #fafafa;
   width: 100%;
   box-sizing: border-box;
-  transition: border-color 0.3s ease;
+  transition: all 0.3s ease;
+  color: #333;
 }
 
 input[type="text"]:focus,
@@ -70,55 +84,86 @@ input[type="email"]:focus,
 input[type="file"]:focus,
 select:focus,
 textarea:focus {
-  border-color: #0b032d;
+  border-color: #4e54c8;
   outline: none;
+  background: #fff;
+  box-shadow: 0 0 10px rgba(78, 84, 200, 0.3);
 }
 
 /* Checkbox Styling */
 input[type="checkbox"] {
   width: 20px;
   height: 20px;
-  margin-top: 5px;
+  cursor: pointer;
+}
+
+label[for="checkbox"] {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  font-size: 16px;
 }
 
 /* Textarea Styling */
 textarea {
-  min-height: 80px;
+  min-height: 120px;
   resize: vertical;
+  padding: 15px;
+  font-family: 'Roboto', Arial, sans-serif;
 }
 
 /* Submit Button Styling */
 button[type="submit"] {
-  background-color: #0b032d;
+  background: linear-gradient(135deg, #4e54c8, #8f94fb);
   color: #fff;
   border: none;
-  padding: 10px 15px;
-  font-size: 16px;
-  font-weight: bold;
+  padding: 18px;
+  font-size: 18px;
+  font-weight: 700;
   cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
+  border-radius: 10px;
+  text-transform: uppercase;
+  transition: all 0.4s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 button[type="submit"]:hover {
-  background-color: #232147;
+  background: linear-gradient(135deg, #3b3f99, #6e7ad9);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+button[type="submit"]:active {
+  transform: translateY(2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(135deg, #494575, #6e7ad9);
+}
+
+/* Input Placeholder Styling */
+input::placeholder,
+textarea::placeholder {
+  color: #aaa;
+  font-size: 14px;
+  font-style: italic;
 }
 
 /* Responsive Design */
 @media (max-width: 600px) {
   form {
-    padding: 15px;
+    padding: 25px;
   }
 
   h3 {
-    font-size: 18px;
+    font-size: 22px;
   }
 
   label {
-    font-size: 13px;
+    font-size: 14px;
   }
 
   button[type="submit"] {
-    font-size: 14px;
+    font-size: 16px;
+    padding: 12px;
   }
 }

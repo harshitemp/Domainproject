@@ -38,27 +38,33 @@ export class SignupComponent {
       };
 
       // HTTP POST request to submit registration data
-      this.http.post('http://localhost:5000/api/register', data)
-        .subscribe(
-          (response: any) => {
-            console.log('User registered successfully', response);
-
-            // Navigate to the respective route based on user type
-            if (userType === 'student') {
+      this.http.post('http://localhost:5000/api/register', data).subscribe(
+        (response: any) => {
+          console.log('User registered successfully', response);
+      
+          // Ensure correct navigation
+          switch (userType) {
+            case 'student':
               this.router.navigate(['/student-registration']);
-            } else if (userType === 'university') {
+              break;
+            case 'university':
               this.router.navigate(['/pursuitmanager']);
-            } else if (userType === 'company') {
+              break;
+            case 'company':
               this.router.navigate(['/training']);
-            } else if (userType === 'coordinators') {
-              this.router.navigate(['/coordinatorsdashboard']);
-            }
-          },
-          (error) => {
-            console.error('Error registering user', error);
+              break;
+            case 'coordinators':
+              this.router.navigate(['/coordinatordashboard']);
+              break;
+            default:
+              console.error('Unknown user type:', userType);
           }
-        );
-
+        },
+        (error) => {
+          console.error('Error registering user', error);
+        }
+      );
+      
       // Reset the form data after submission
       this.formData = { email: '', password: '' };
     }

@@ -98,3 +98,30 @@ tbody td {
     padding: 8px 15px;
   }
 }
+#campusPieChart {
+  width: 300px; /* Set the desired width */
+  height: 300px; /* Set the desired height */
+  margin: 0 auto; /* Optional: Center the chart */
+  display: block; /* Ensures it's treated as a block element */
+}
+/* Optional: Style the chart container */
+canvas {
+  max-width: 100%;
+  height: auto;
+  margin: 20px 0;
+}
+
+/* Optional: Style the table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table, th, td {
+  border: 1px solid black;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+}

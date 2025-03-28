@@ -13,6 +13,7 @@
   display: flex;
   margin-top: 20px;
 }
+
 .highlighted-name {
   background-color: yellow;  /* Highlight color */
   display: inline-block;      /* To ensure padding/margin works as expected */
@@ -45,12 +46,22 @@ textarea {
   resize: none;
   height: 60px;
 }
+
 .cv-photo {
   border: 1px dashed #D1AD45; /* Placeholder for image border */
   text-align: center;
   margin-bottom: 10px;
   padding: 10px;
 }
+
+.cv-photo img.uploaded-photo {
+  max-width: 150px; /* Set a maximum width for the image */
+  max-height: 150px; /* Set a maximum height for the image */
+  width: auto; /* Ensure the image retains its aspect ratio */
+  height: auto; /* Ensure the image retains its aspect ratio */
+  border-radius: 8px; /* Optional: rounded corners for the image */
+}
+
 .action-buttons {
   display: flex;
   justify-content: center;

@@ -28,6 +28,7 @@ import { DataupcomingComponent } from './dataupcoming/dataupcoming.component';
 import { TopnavforallComponent } from './topnavforall/topnavforall.component';
 import { GoogleFormResponsesComponent } from './google-form-responses/google-form-responses.component';
 import { DisplayResponsesComponent } from './display-responses/display-responses.component';
+import { CooordinatordashboardComponent } from './cooordinatordashboard/cooordinatordashboard.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -59,6 +60,8 @@ export const routes: Routes = [
     {path:'Topnavforall',component:TopnavforallComponent},
     { path: 'google-form-responses', component: GoogleFormResponsesComponent },
 {path:'display-responses',component:DisplayResponsesComponent},
+{path:'cooordinatordashboard',component:CooordinatordashboardComponent},
+
     ];
 
 @NgModule({

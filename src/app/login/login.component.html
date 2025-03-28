@@ -1,5 +1,4 @@
 <app-navbar></app-navbar>
-
 <div class="header">
   <h1>Login</h1>
   <p>Select User Type</p>
@@ -8,39 +7,96 @@
 <!-- Image Buttons -->
 <div class="image-buttons">
   <div class="image-button" (click)="showForm('student')">
-    <img src="assests/images/student1.jpg" alt="Student">
+    <img src="/assests/images/student1.jpg" alt="Student">
     <span>Student</span>
   </div>
   <div class="image-button" (click)="showForm('university')">
-    <img src="assests/images/pursuitmanager.jpg" alt="Pursuitmanager">
+    <img src="/assests/images/pursuitmanager.jpg" alt="University">
     <span>Manager-CR</span>
   </div>
   <div class="image-button" (click)="showForm('company')">
-    <img src="assests/images/training.jpg" alt="Company">
+    <img src="/assests/images/training.jpg" alt="Company">
     <span>Trainer</span>
   </div>
   <div class="image-button" (click)="showForm('coordinators')">
-    <img src="assests/images/coordinators.jpg" alt="Coordinators">
+    <img src="/assests/images/coordinators.jpg" alt="Coordinators">
     <span>Coordinators</span>
   </div>
 </div>
 
-<!-- Login Form using NgForm -->
-<form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" *ngIf="selectedForm">
-  <h2 *ngIf="selectedForm === 'student'">Student Login</h2>
-  <h2 *ngIf="selectedForm === 'university'">Manager-CR Login</h2>
-  <h2 *ngIf="selectedForm === 'company'">Trainer Login</h2>
-  <h2 *ngIf="selectedForm === 'coordinators'">Coordinators Login</h2>
+<!-- Registration Forms -->
+<div *ngIf="selectedForm">
+  <form *ngIf="selectedForm === 'student'" (ngSubmit)="onSubmit()">
+    <h2>Student Login</h2>
+    <ng-container *ngTemplateOutlet="loginForm"></ng-container>
+  </form>
 
-  <div class="form-group">
+  <form *ngIf="selectedForm === 'university'" (ngSubmit)="onSubmit()">
+    <h2>Manager-CR Login</h2>
+    <ng-container *ngTemplateOutlet="loginForm"></ng-container>
+  </form>
+
+  <form *ngIf="selectedForm === 'company'" (ngSubmit)="onSubmit()">
+    <h2>Trainer Login</h2>
+    <ng-container *ngTemplateOutlet="loginForm"></ng-container>
+  </form>
+
+  <form *ngIf="selectedForm === 'coordinators'" (ngSubmit)="onSubmit()">
+    <h2>Coordinators Login</h2>
+    <ng-container *ngTemplateOutlet="loginForm"></ng-container>
+  </form>
+</div>
+
+<ng-template #loginForm>
+  <!-- Email Input and Send OTP -->
+  <div *ngIf="!otpSent" class="form-group">
     <label for="email">Email</label>
-    <input type="email" id="email" name="email" class="form-control" [(ngModel)]="formData.email" required>
+    <input
+      type="email"
+      class="form-control"
+      id="email"
+      [(ngModel)]="formData.email"
+      name="email"
+      required
+    />
+    <button type="button" class="btn btn-primary mt-2" (click)="sendOtp()">Send OTP</button>
   </div>
 
-  <div class="form-group">
+  <!-- OTP Verification -->
+  <div *ngIf="otpSent" class="form-group">
+    <label>Enter OTP</label>
+    <div class="d-flex">
+      <input
+        type="text"
+        maxlength="1"
+        class="form-control mx-1"
+        *ngFor="let digit of otp; let i = index"
+        [(ngModel)]="otp[i]"
+        [name]="'otp' + i"
+        (keyup)="moveNext($event, i)"
+        required
+      />
+    </div>
+    <div class="mt-2">
+      <button type="button" class="btn btn-success" (click)="verifyOtp()">Verify OTP</button>
+    </div>
+  </div>
+
+  <!-- Success/Error Messages -->
+  <div *ngIf="successMessage" class="text-success mt-2">{{ successMessage }}</div>
+  <div *ngIf="errorMessage" class="text-danger mt-2">{{ errorMessage }}</div>
+
+  <!-- Password Input -->
+  <div *ngIf="otpVerified" class="form-group mt-3">
     <label for="password">Password</label>
-    <input type="password" id="password" name="password" class="form-control" [(ngModel)]="formData.password" required>
+    <input
+      type="password"
+      class="form-control"
+      id="password"
+      [(ngModel)]="formData.password"
+      name="password"
+      required
+    />
+    <button type="submit" class="btn btn-primary mt-3">Login</button>
   </div>
-
-  <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Login</button>
-</form>
+</ng-template>
