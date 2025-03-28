@@ -2,13 +2,12 @@ import { Component } from '@angular/core';
 import { HttpClient, HttpClientModule, HttpErrorResponse } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SidenavComponent } from '../sidenav/sidenav.component';
 import { TopnavComponent } from '../topnav/topnav.component';
 
 @Component({
   selector: 'app-upcoming',
   standalone:true,
-  imports: [SidenavComponent, TopnavComponent, HttpClientModule, FormsModule, ReactiveFormsModule, CommonModule],
+  imports: [ TopnavComponent, HttpClientModule, FormsModule, ReactiveFormsModule, CommonModule],
   templateUrl: './upcoming.component.html',
   styleUrls: ['./upcoming.component.css']
 })
@@ -27,7 +26,11 @@ export class UpcomingComponent {
     mobile: '',
     campuses: {
       vizianagaram: false,
-      bhubaneswar: false
+      bhubaneswar: false,
+      parlakemundi: false,
+      rayagada: false,
+      balasore: false,
+      chatrapur: false
     }
   };
 

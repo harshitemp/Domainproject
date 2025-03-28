@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { FormsModule, NgForm } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from '../navbar/navbar.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Router, RouterLink } from '@angular/router';
+import { HeaderloginComponent } from '../headerlogin/headerlogin.component';
 
 @Component({
   selector: 'app-login',
@@ -12,74 +13,122 @@ import { Router, RouterLink } from '@angular/router';
     CommonModule,
     FormsModule,
     NavbarComponent,
-    HttpClientModule,
-    RouterLink
+    HeaderloginComponent,
   ],
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  selectedForm: string | undefined; // Variable to track the selected user type
-  formData = { email: '', password: '' }; // Initialize form data
+  selectedForm: string | undefined;
+  formData: any = { email: '', password: '' };
+  otp: string[] = ['', '', '', ''];
+  otpSent: boolean = false;
+  otpVerified: boolean = false;
+  partialEmail: string = '';
+  successMessage: string = '';
+  errorMessage: string = '';
+  private baseUrl: string = 'http://localhost:5000/api';
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  showForm(formType: string) {
-    this.selectedForm = formType; // Set the selected form type
+  showForm(formType: string): void {
+    this.selectedForm = formType;
+    this.resetForm();
   }
 
-  onSubmit(form: NgForm) {
-    if (this.selectedForm) {
-      if (form.valid) { // Ensure the form is valid
-        const loginData = {
-          email: this.formData.email,
-          password: this.formData.password,
-          userType: this.selectedForm // Include the user type in the login data
-        };
+  resetForm(): void {
+    this.formData = { email: '', password: '' };
+    this.otp = ['', '', '', ''];
+    this.otpSent = false;
+    this.otpVerified = false;
+    this.partialEmail = '';
+    this.successMessage = '';
+    this.errorMessage = '';
+  }
 
-        // Send login data to the backend
-        this.http.post('http://localhost:5000/api/login', loginData) // Ensure this URL matches your backend
-          .subscribe({
-            next: (response) => {
-              console.log('Login successful', response);
-
-              // Navigate based on the selected user type
-              switch (this.selectedForm) {
-                case 'student':
-                  this.router.navigate(['/student-registration']);
-                  break;
-                case 'university':
-                  this.router.navigate(['/pursuitmanager']);
-                  break;
-                case 'company':
-                  this.router.navigate(['/training']);
-                  break;
-                case 'coordinators':
-                  this.router.navigate(['/view-placement']);
-                  break;
-                default:
-                  console.warn('Unknown user type:', this.selectedForm);
-              }
-            },
-            error: (error) => {
-              console.error('Login failed', error);
-              // Handle specific error responses
-              if (error.status === 404) {
-                alert('Error: Endpoint not found. Please verify the server and endpoint URL.');
-              } else {
-                alert('Login failed: ' + (error.error?.message || 'An error occurred. Please try again.'));
-              }
-            }
-          });
-
-        // Optionally reset formData after submission
-        this.formData = { email: '', password: '' };
-        form.resetForm(); // Reset the form after submission
-      } else {
-        alert('Please fill in all required fields.'); // Alert if the form is invalid
-      }
+  sendOtp(): void {
+    if (this.validateEmail(this.formData.email)) {
+      this.http.post(`${this.baseUrl}/sendotp`, { email: this.formData.email }).subscribe(
+        (response: any) => {
+          this.otpSent = true;
+          this.partialEmail = `***${this.formData.email.slice(3)}`;
+          this.successMessage = response.message || 'OTP sent successfully!';
+          this.errorMessage = '';
+        },
+        (error) => {
+          this.successMessage = '';
+          this.errorMessage = error.error?.message || 'Error sending OTP.';
+        }
+      );
     } else {
-      alert('Please select a user type.'); // Alert if no user type is selected
+      this.errorMessage = 'Invalid Email';
+      this.successMessage = '';
     }
+  }
+
+  verifyOtp(): void {
+    const otpValue = this.otp.join('');
+    if (otpValue.length === 4) {
+      this.http.post(`${this.baseUrl}/verifyotp`, { email: this.formData.email, otp: otpValue }).subscribe(
+        (response: any) => {
+          this.successMessage = response.message || 'OTP verified successfully!';
+          this.errorMessage = '';
+          this.otpVerified = true;
+        },
+        (error) => {
+          this.successMessage = '';
+          this.errorMessage = error.error?.message || 'Invalid OTP.';
+        }
+      );
+    } else {
+      this.errorMessage = 'Please enter a valid 4-digit OTP.';
+    }
+  }
+
+  onSubmit(): void {
+    if (this.otpVerified) {
+      this.http.post(`${this.baseUrl}/login`, this.formData).subscribe(
+        (response: any) => {
+          alert('Login successful!');
+          const redirectUrl = this.getRedirectUrl(this.selectedForm);
+          this.router.navigate([redirectUrl]);
+        },
+        (error) => {
+          alert('Login failed. Please check your credentials.');
+        }
+      );
+    } else {
+      alert('Please verify OTP before proceeding.');
+    }
+  }
+
+  private getRedirectUrl(formType: string | undefined): string {
+    switch (formType) {
+      case 'student':
+        return '/student-registration';
+      case 'university':
+        return '/pursuitmanager';
+      case 'company':
+        return '/training';
+      case 'coordinators':
+        return '/cooordinatordashboard';
+      default:
+        return '/';
+    }
+  }
+
+  moveNext(event: KeyboardEvent, index: number): void {
+    const input = event.target as HTMLInputElement;
+    if (event.key === 'Backspace' && index > 0) {
+      this.otp[index] = '';
+      (document.querySelectorAll('.form-control')[index - 1] as HTMLElement).focus();
+    } else if (input.value && index < 3) {
+      (document.querySelectorAll('.form-control')[index + 1] as HTMLElement).focus();
+    }
+  }
+
+  private validateEmail(email: string): boolean {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
   }
 }

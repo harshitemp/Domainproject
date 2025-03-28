@@ -3,6 +3,7 @@ import { HttpClient, HttpClientModule,  } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { TopnavComponent } from "../topnav/topnav.component";
 import { FormsModule } from '@angular/forms';
+import { TopnavallComponent } from '../topnavall/topnavall.component';
 
 @Component({
   selector: 'app-google-form-responses',

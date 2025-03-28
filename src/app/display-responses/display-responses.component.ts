@@ -3,11 +3,12 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { TopnavallComponent } from "../topnavall/topnavall.component";
 import { FormsModule } from '@angular/forms';
+import { SidenavComponent } from '../sidenav/sidenav.component';
 
 @Component({
   selector: 'app-display-responses',
   standalone:true,
-  imports: [HttpClientModule, CommonModule, TopnavallComponent,FormsModule],
+  imports: [HttpClientModule, CommonModule,SidenavComponent,FormsModule,TopnavallComponent],
   templateUrl: './display-responses.component.html',
   styleUrls: ['./display-responses.component.css']
 })
